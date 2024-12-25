@@ -56,6 +56,10 @@ export class update extends plugin {
   }
 
   async updateRes (e) {
+    if (!e.isMaster) {
+      await e.reply('只有主人才能更新表情包数据')
+      return
+    }
     try {
       if (!Config.meme.url) {
         await Tools.downloadMemeData(true)
