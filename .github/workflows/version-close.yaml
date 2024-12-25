@@ -1,20 +1,36 @@
- name: 删除自动更新版本PR分支
+name: 删除PR版本分支
 
- on:
-   pull_request:
-     types: [closed]
+on:
+  pull_request:
+    types: [closed]
 
- jobs:
-   delete_branch:
-     if: github.event.pull_request.merged == true && startsWith(github.event.pull_request.head.ref, 'version/')
-     runs-on: ubuntu-latest
-     permissions:
-       contents: write
-     steps:
-       - name: Checkout code
-         uses: actions/checkout@v4
+jobs:
+  sync-main-to-dev:
+    if: github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: 检出代码
+        uses: actions/checkout@v4
 
-       - name: Delete branch
-         run: |
-           git push origin --delete ${{ github.event.pull_request.head.ref }}
+      - name: 同步分支
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git checkout main
+          git pull origin main
+          git checkout dev
+          git pull origin dev
+          git merge main --no-edit
+          git push origin dev
 
+  delete-branch:
+    if: github.event.pull_request.merged == true && startsWith(github.event.pull_request.head.ref, 'version/')
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: 删除分支
+        run: |
+          git push origin --delete ${{ github.event.pull_request.head.ref }}
