@@ -3,6 +3,7 @@ import Utils from './utils.js'
 import { Config } from '../components/index.js'
 import FormData from 'form-data'
 import Args from './args.js'
+import Tools from './tools.js'
 
 const Rule = {
   /**
