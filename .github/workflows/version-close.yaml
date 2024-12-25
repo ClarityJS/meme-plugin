@@ -12,9 +12,11 @@ jobs:
       contents: write
     steps:
       - name: 检出代码
-        uses: actions/checkout@v4
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
 
-      - name: 同步分支
+      - name: 同步 main 到 dev
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
@@ -31,6 +33,11 @@ jobs:
     permissions:
       contents: write
     steps:
-      - name: 删除分支
+      - name: 检出代码
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: 删除版本分支
         run: |
-          git push origin --delete ${{ github.event.pull_request.head.ref }}
+          git push origin --delete ${{ github.event.pull_request.head.ref }} || echo "版本分支已不存在，跳过删除。"
