@@ -41,6 +41,7 @@ jobs:
           git tag -f "v${{ env.new_version }}"
           git push origin -f "${{ env.branch_name }}"
           git push origin -f "v${{ env.new_version }}"
+          git push origin -f "HEAD:dev"
 
       - name: 检查是否已有 Pull Request
         id: check_pr
@@ -61,7 +62,6 @@ jobs:
       - name: 创建 Pull Request
         if: env.pr_exists == 'false'
         run: |
-          # 创建 Pull Request
           status_code=$(curl -s -o /dev/null -w "%{http_code}" \
             -X POST \
             -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
