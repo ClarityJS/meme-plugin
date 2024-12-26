@@ -40,6 +40,9 @@ export class update extends plugin {
     }
   }
 
+  async checkUpdate (e = this.e) {
+    await this.check(false, e)
+  }
   async update (e = this.e) {
     const Type = e.msg.includes('强制') ? '#强制更新' : '#更新'
     e.msg = Type + Version.Plugin_Name
@@ -83,31 +86,53 @@ export class update extends plugin {
   async check (isTask = false, e = this.e) {
     try {
       const result = await checkRepo.isUpToDate()
+      const latestCommit = result.latestCommit
+      const remoteSHA = latestCommit.sha
+      const shaKey = `Yz:clarity-meme:update:commit:${result.branchName}`
+      let storedSHA = await redis.get(shaKey)
 
-      if (!result.isUpToDate) {
-        const latestCommit = result.latestCommit
-        const commitInfo = [
-          '[清语表情更新推送]',
-          `提交者：${latestCommit.committer.login}`,
-          `时间：${latestCommit.commitTime}`,
-          `提交信息：${latestCommit.message.title}`,
-          `地址：${latestCommit.commitUrl}`
-        ].join('\n')
+      if (!storedSHA) {
+        storedSHA = result.localVersion
+        await redis.set(shaKey, storedSHA)
+      }
 
-        if (isTask) {
-          const masterQQs = Config.masterQQ?.filter((qq) => qq !== 'stdin')
-          if (masterQQs?.length) {
-            const firstMasterQQ = masterQQs[0]
-            await Bot.pickUser(firstMasterQQ).sendMsg(commitInfo)
-          }
-        } else {
-          await e.reply(commitInfo)
-        }
-      } else {
+      if (storedSHA === remoteSHA) {
         if (!isTask) {
           await e.reply('当前已是最新版本，无需更新。')
         }
+        return
       }
+
+      const commitInfo = [
+        '[清语表情更新推送]',
+        `提交者：${latestCommit.committer.login}`,
+        `时间：${latestCommit.commitTime}`,
+        `提交信息：${latestCommit.message.title}`,
+        `地址：${latestCommit.commitUrl}`
+      ].join('\n')
+
+      if (isTask) {
+        const masterQQs = Config.masterQQ.filter(qq => {
+          const qqStr = String(qq)
+          return qqStr.length <= 11 && qqStr !== 'stdin'
+        })
+
+        if (masterQQs.length === 0) {
+          return
+        }
+
+        for (let qq of masterQQs) {
+          try {
+            await Bot.pickUser(qq).sendMsg(commitInfo)
+            break
+          } catch (sendError) {
+          }
+        }
+      } else {
+        await e.reply(commitInfo)
+      }
+
+      await redis.set(shaKey, remoteSHA)
     } catch (error) {
       logger.error(`检测版本时出错: ${error.message}`)
       if (!isTask) {
@@ -115,5 +140,6 @@ export class update extends plugin {
       }
     }
   }
+
 
 }
