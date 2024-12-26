@@ -18,15 +18,19 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: 更新版本号
+      - name: 设置 pnpm 环境
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9
+
+      - name: 更新项目版本号
         id: bump_version
+        env:
+          VERSION_TYPE: ${{ vars.VERSION_TYPE }}
         run: |
-          current_version=$(jq -r '.version' package.json)
-          IFS='.' read -r major minor patch <<< "$current_version"
-          minor=$((minor + 1))
-          patch=0
-          new_version="$major.$minor.$patch"
-          jq ".version = \"$new_version\"" package.json > package.json.tmp && mv package.json.tmp package.json
+          version_type=${VERSION_TYPE:-patch}
+          # patch: 小版本号，minor: 中版本号，major: 大版本号
+          new_version=$(pnpm version $version_type --no-git-tag-version | sed 's/v//')
           echo "new_version=$new_version" >> $GITHUB_ENV
           echo "branch_name=version/v$new_version" >> $GITHUB_ENV
 
@@ -47,19 +51,35 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          existing_pr=$(gh pr list --state open --head "${{ env.branch_name }}" --base main --json number | jq '.[0].number')
-          if [ -n "$existing_pr" ] && [ "$existing_pr" != "null" ]; then
-            echo "pr_number=$existing_pr" >> $GITHUB_ENV
+          existing_pr=$(gh pr list --state open --head "${{ env.branch_name }}" --base main --json number)
+          if [ "$(echo "$existing_pr" | jq -r '. | length')" -gt 0 ]; then
+            echo "pr_number=$(echo "$existing_pr" | jq -r '.[0].number')" >> $GITHUB_ENV
           fi
 
       - name: 创建 Pull Request
-        if: env.pr_number == ''
+        if: ${{ env.pr_number == '' }}
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           gh pr create \
-            --title "版本更新至 ${{ env.new_version }} 🎉" \
-            --body "项目版本更新\n此 PR 是自动更新内容。\n请审核并合并。" \
+            --title "✨ 更新版本至 ${{ env.new_version }} 🎉" \
+            --body "$(printf '%s\n' \
+            '## 📢 项目版本更新通知' \
+            '' \
+            '本次版本已自动升级至 **${{ env.new_version }}**。' \
+            '' \
+            '### 🔖 更新详情' \
+            '' \
+            '- 更新版本号为：**${{ env.new_version }}**。' \
+            '' \
+            '### 📝 注意事项' \
+            '' \
+            '- 请确保该版本已通过必要的测试。' \
+            '- 合并后会触发相关的发布流程。' \
+            '' \
+            '如有任何疑问，请联系相关负责人。' \
+            '' \
+            '感谢您的审核与支持！🙌')" \
             --head "${{ env.branch_name }}" \
             --base "main" \
             --fill
