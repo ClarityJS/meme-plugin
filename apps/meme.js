@@ -9,17 +9,33 @@ export class meme extends plugin {
       priority: -Infinity,
       rule: []
     })
+
+    this.rulesInitialized = false
+    this.initRules()
+  }
+
+  initRules () {
+    if (this.rulesInitialized) {
+      return
+    }
+
+    this.rule = this.rule.filter((r) => r.fnc !== 'meme')
     const prefix = Config.meme.forceSharp ? '^#' : '^#?'
+
     Object.entries(Meme.infoMap).forEach(([key, value]) => {
-      value.keywords.forEach(keyword => {
+      value.keywords.forEach((keyword) => {
+        const escapedKeyword = keyword.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+        const regex = new RegExp(`${prefix}(${escapedKeyword})(.*)`, 'i')
+
         this.rule.push({
-          reg: new RegExp(`${prefix}(${keyword})(.*)`, 'i'),
+          reg: regex,
           fnc: 'meme'
         })
       })
     })
-  }
 
+    this.rulesInitialized = true
+  }
   async meme (e) {
     if (!Config.meme.Enable) return false
 
@@ -48,7 +64,7 @@ export class meme extends plugin {
       const userId = e.user_id
 
       /**
-       * 黑名名单
+       * 黑名单模式
        */
       if (Config.access.mode === 0) {
         /**

@@ -123,7 +123,7 @@ export function supportGuoba () {
           componentProps: {
             options: Array.from(new Set(
               Object.values(Meme.infoMap || {}).flatMap(info => info.keywords)
-            )).map(keyword => ({ label: keyword, value: keyword })),
+            )).map(keyword => ({ label: keyword, value: Meme.getKey(keyword) })),
             mode: 'multiple',
             allowClear: true
           }
@@ -164,7 +164,7 @@ export function supportGuoba () {
           componentProps: {
             options: Array.from(new Set(
               Object.values(Meme.infoMap || {}).flatMap(info => info.keywords)
-            )).map(keyword => ({ label: keyword, value: keyword })),
+            )).map(keyword => ({ label: keyword, value: Meme.getKey(keyword) })),
             mode: 'multiple',
             allowClear: true
           }

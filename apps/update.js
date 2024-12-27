@@ -1,7 +1,8 @@
 import { Version, Config } from '../components/index.js'
 import { update as Update } from '../../other/update.js'
-import { Restart } from '../../other/restart.js'
-import { Tools, checkRepo } from '../models/index.js'
+import { Tools, checkRepo, Meme } from '../models/index.js'
+import { meme } from './meme.js'
+import pluginsLoader from '../../../lib/plugins/loader.js'
 
 export class update extends plugin {
   constructor () {
@@ -63,23 +64,54 @@ export class update extends plugin {
       await e.reply('只有主人才能更新表情包数据')
       return
     }
+
     try {
       if (!Config.meme.url) {
         await Tools.downloadMemeData(true)
       } else {
         await Tools.generateMemeData(true)
       }
+    }
+    catch (error) {
+      logger.error(`表情包数据更新出错: ${error.message}`)
+      await e.reply(`表情包数据更新失败: ${error.message}`)
+      return true
+    }
 
-      if (Config.other.restart) {
-        await e.reply('表情包数据更新成功，正在重启...')
-        new Restart(this.e).restart()
-      } else {
-        await e.reply('表情包数据更新成功，请重启后生效')
-        return
-      }
+    try {
+      const prefix = Config.meme.forceSharp ? '^#' : '^#?'
+      const rules = []
+
+      Object.entries(Meme.infoMap).forEach(([key, value]) => {
+        value.keywords.forEach((keyword) => {
+          const escapedKeyword = keyword.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+          const regex = new RegExp(`${prefix}(${escapedKeyword})(.*)`, 'i')
+          rules.push({ reg: regex, fnc: 'meme' })
+        })
+      })
+
+      Meme.loaded = false
+      await Meme.load()
+      const Plugin = new meme()
+      Plugin.rule = rules
+      const PluginName = Plugin.name
+      const PluginRule = Plugin.rule
+
+      const pluginKey = pluginsLoader.priority.find((p) => p.plugin.name === PluginName)
+      pluginKey.plugin.rule = rules.map((r) => {
+        if (typeof r.reg === 'string') {
+          r.reg = new RegExp(r.reg.replace(/^\/|\/[gimsuy]*$/g, ''), 'i')
+        }
+        return r
+      })
+      meme.rulesInitialized = false
+      await Plugin.initRules()
+      logger.debug(`[${this.name}] 动态规则生成完成，共生成规则数量: ${PluginRule.length}`)
+      await e.reply('表情包数据更新完成')
     } catch (error) {
       logger.error(`表情包数据更新出错: ${error.message}`)
       await e.reply(`表情包数据更新失败: ${error.message}`)
+      return true
     }
   }
 
