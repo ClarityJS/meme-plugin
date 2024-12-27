@@ -187,12 +187,6 @@ export function supportGuoba () {
           }
         },
         {
-          field: 'other.restart',
-          label: '重启',
-          component: 'Switch',
-          bottomHelpMessage: '是否开启资源更新默认重启'
-        },
-        {
           field: 'other.checkRepo',
           label: '仓库更新检测',
           component: 'Switch',

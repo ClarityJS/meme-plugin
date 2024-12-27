@@ -1,6 +1,3 @@
-# 是否开启资源更新自动重启
-restart: true
-
 # 是否开启仓库更新检查推送
 checkRepo: true
 

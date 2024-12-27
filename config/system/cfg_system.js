@@ -145,14 +145,6 @@ export const cfgSchema = {
   other: {
     title: '其他设置',
     cfg: {
-      restart: {
-        title: '重启',
-        key: '重启',
-        type: 'boolean',
-        def: true,
-        desc: '是否开启资源更新默认重启',
-        fileName: 'other'
-      },
       checkRepo: {
         title: '仓库更新检测',
         key: '仓库更新检测',
