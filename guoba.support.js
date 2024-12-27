@@ -43,7 +43,7 @@ export function supportGuoba () {
           field: 'meme.url',
           label: '自定义地址',
           component: 'Input',
-          bottomHelpMessage: '自定义表情包地址,为空时使用自带'
+          bottomHelpMessage: '自定义表情包地址,为空时使用插件自带'
         },
         {
           field: 'meme.cache',
