@@ -153,16 +153,16 @@ const Utils = {
       (match) => match[1]
     )
 
-    const quotedImagesOrAvatar = await this.getQuotedImages(e)
+    const quotedImages = await this.getQuotedImages(e)
 
     let images = []
     let tasks = []
 
     /**
-     * 引用消息的图片
+     * 获取引用消息中的图片
      */
-    if (quotedImagesOrAvatar.length > 0) {
-      quotedImagesOrAvatar.forEach((item) => {
+    if (quotedImages.length > 0) {
+      quotedImages.forEach((item) => {
         if (Buffer.isBuffer(item)) {
           images.push(item)
         } else {
@@ -172,7 +172,7 @@ const Utils = {
     }
 
     /**
-     * 消息中的图片
+     * 获取消息中的图片
      */
     if (imagesInMessage.length > 0) {
       tasks.push(
@@ -181,32 +181,32 @@ const Utils = {
     }
 
     /**
-     * 艾特用户头像(长按艾特)
+     * 艾特用户头像（长按艾特）
      */
-    if (quotedImagesOrAvatar.length === 0 && ats.length > 0) {
+    if (quotedImages.length === 0 && ats.length > 0) {
       const avatarBuffers = await this.getAvatar(ats)
-      avatarBuffers.forEach(avatarList => {
+      avatarBuffers.forEach((avatarList) => {
         if (Array.isArray(avatarList)) {
-          avatarList.forEach(avatar => {
+          avatarList.forEach((avatar) => {
             if (avatar) images.push(avatar)
           })
-        } else if(avatarList) {
+        } else if (avatarList) {
           images.push(avatarList)
         }
       })
     }
 
     /**
-     * 手动输入的艾特(@+数字)
+     * 手动艾特用户头像（@+数字）
      */
     if (manualAtQQs.length > 0) {
       const avatarBuffers = await this.getAvatar(manualAtQQs)
-      avatarBuffers.forEach(avatarList => {
+      avatarBuffers.forEach((avatarList) => {
         if (Array.isArray(avatarList)) {
-          avatarList.forEach(avatar => {
+          avatarList.forEach((avatar) => {
             if (avatar) images.push(avatar)
           })
-        } else if(avatarList) {
+        } else if (avatarList) {
           images.push(avatarList)
         }
       })
@@ -224,10 +224,12 @@ const Utils = {
 
 
   /**
-   * 获取引用消息
-   */
+ * 获取引用消息
+ */
   async getQuotedImages (e) {
     let source = null
+
+
     if (e.getReply) {
       source = await e.getReply()
     } else if (e.source) {
@@ -245,7 +247,15 @@ const Utils = {
     const imgArr = source.message
       .filter((msg) => msg.type === 'image')
       .map((img) => img.url)
-    if (imgArr.length > 0 && source.message.every(msg => msg.type === 'image')) {
+
+    const hasOtherTypes = source.message.some((msg) => msg.type !== 'image')
+    const isSelfMessage = source.sender?.user_id === e.sender.user_id
+
+    if (isSelfMessage && imgArr.length > 0) {
+      return imgArr
+    }
+
+    if (imgArr.length > 0 && !hasOtherTypes) {
       return imgArr
     }
 
@@ -253,16 +263,16 @@ const Utils = {
       try {
         const avatarBuffers = await this.getAvatar([source.sender.user_id])
         if (Array.isArray(avatarBuffers) && avatarBuffers.length > 0) {
-          return [avatarBuffers[0]]
+          return avatarBuffers
         }
-        return []
       } catch (error) {
-        return []
+        logger.error(`[清语表情] 获取引用消息失败: ${error.message}`)
       }
     }
 
     return []
   }
+
 
 }
 
