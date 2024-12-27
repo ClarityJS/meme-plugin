@@ -30,7 +30,7 @@ export function supportGuoba () {
       // 配置项 schemas
       schemas: [
         {
-          component: 'Divider',
+          component: 'SOFT_GROUP_BEGIN',
           label: '表情设置'
         },
         {
@@ -70,7 +70,7 @@ export function supportGuoba () {
           bottomHelpMessage: '是否强制使用#触发, 开启后必须使用#触发'
         },
         {
-          component: 'Divider',
+          component: 'SOFT_GROUP_BEGIN',
           label: '名单设置'
         },
         {
@@ -129,7 +129,7 @@ export function supportGuoba () {
           }
         },
         {
-          component: 'Divider',
+          component: 'SOFT_GROUP_BEGIN',
           label: '表情保护设置'
         },
         {
@@ -170,7 +170,7 @@ export function supportGuoba () {
           }
         },
         {
-          component: 'Divider',
+          component: 'SOFT_GROUP_BEGIN',
           label: '其他设置'
         },
         {
