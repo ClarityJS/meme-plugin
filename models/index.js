@@ -5,5 +5,6 @@ import Rule from './rule.js'
 import Args from './args.js'
 import Tools from './tools.js'
 import checkRepo from './checkRepo.js'
+import Guoba from './Guoba/index.js'
 
-export { Request, Meme, Utils, Rule, Args, Tools, checkRepo }
+export { Request, Meme, Utils, Rule, Args, Tools, checkRepo, Guoba }
