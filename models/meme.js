@@ -42,7 +42,6 @@ const Meme = {
    */
   async load () {
     if (this.loaded) {
-      logger.debug('表情数据已加载，跳过重复加载')
       return
     }
 

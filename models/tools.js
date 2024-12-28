@@ -31,7 +31,6 @@ const Tools = {
       const filePath = `${Version.Plugin_Path}/data/meme.json`
       Data.createDir('data')
       if (fs.existsSync(filePath) && !forceUpdate) {
-        logger.debug('远程表情包数据已存在，跳过下载')
         return
       }
       if (forceUpdate && fs.existsSync(filePath)) {
@@ -39,7 +38,6 @@ const Tools = {
       }
       const response = await Request.get('https://pan.wuliya.cn/d/Yunzai-Bot/data/meme.json')
       Data.writeJSON('data/meme.json', response)
-      logger.debug('远程表情包数据下载完成')
     } catch (error) {
       logger.error(`下载远程表情包数据失败: ${error.message}`)
       throw error
@@ -54,7 +52,6 @@ const Tools = {
       const filePath = `${Version.Plugin_Path}/data/custom/meme.json`
       Data.createDir('data/custom', '', false)
       if (fs.existsSync(filePath) && !forceUpdate) {
-        logger.debug('本地表情包数据已存在，跳过生成')
         return
       }
       if (forceUpdate && fs.existsSync(filePath)) {
@@ -74,7 +71,6 @@ const Tools = {
       }
 
       Data.writeJSON('data/custom/meme.json', memeData, 2)
-      logger.debug('本地表情包数据生成完成')
     } catch (error) {
       logger.error(`生成本地表情包数据失败: ${error.message}`)
       throw error

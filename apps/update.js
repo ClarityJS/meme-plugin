@@ -106,7 +106,6 @@ export class update extends plugin {
       })
       meme.rulesInitialized = false
       await Plugin.initRules()
-      logger.debug(`[${this.name}] 动态规则生成完成，共生成规则数量: ${PluginRule.length}`)
       await e.reply('表情包数据更新完成')
     } catch (error) {
       logger.error(`表情包数据更新出错: ${error.message}`)

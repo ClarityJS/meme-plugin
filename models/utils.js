@@ -10,11 +10,8 @@ const Utils = {
   async getImageBuffer (imageUrl) {
     if (!imageUrl) throw new Error('图片地址不能为空')
 
-    logger.debug(`[清语表情] 开始下载图片: ${imageUrl}`)
-
     try {
       const buffer = await Request.get(imageUrl, {}, 'arraybuffer')
-      logger.debug(`[清语表情] 图片下载完成: ${imageUrl}`)
       return buffer
     } catch (error) {
       logger.error(`[清语表情] 图片下载失败: ${error.message}`)
@@ -28,10 +25,8 @@ const Utils = {
   async bufferToBase64 (buffer) {
     if (!buffer) throw new Error('图片 Buffer 不能为空')
 
-    logger.debug('[清语表情] 开始转换 Buffer 为 Base64')
     try {
       const base64Data = buffer.toString('base64')
-      logger.debug('[清语表情] Base64 转换完成')
       return base64Data
     } catch (error) {
       logger.error(`[清语表情] Base64 转换失败: ${error.message}`)
@@ -49,7 +44,6 @@ const Utils = {
     const cacheDir = `${Version.Plugin_Path}/data/avatar`
     if (!fs.existsSync(cacheDir)) {
       Data.createDir('data/avatar', '', false)
-      logger.debug(`[清语表情] 创建头像缓存目录: ${cacheDir}`)
     }
 
     const getAvatarUrl = async (qq) => {
@@ -85,7 +79,6 @@ const Utils = {
           const localLastModified = localStats.mtime
 
           if (localLastModified >= remoteLastModified) {
-            logger.debug(`[清语表情] 使用已缓存头像: QQ=${qq}, Path=${cachePath}`)
             return fs.readFileSync(cachePath)
           }
         } catch (error) {
@@ -93,7 +86,6 @@ const Utils = {
         }
       }
 
-      logger.debug(`[清语表情] 开始下载头像: QQ=${qq}, URL: ${avatarUrl}`)
       try {
         const buffer = await Request.get(avatarUrl, {}, 'arraybuffer')
         if (buffer && Buffer.isBuffer(buffer)) {
