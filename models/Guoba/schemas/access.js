@@ -53,7 +53,7 @@ export default [
     component: 'Select',
     bottomHelpMessage: '设置禁用表情列表，如骑',
     componentProps: {
-      options: list,
+      options: await list(),
       mode: 'multiple',
       allowClear: true
     }

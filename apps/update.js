@@ -95,7 +95,6 @@ export class update extends plugin {
       const Plugin = new meme()
       Plugin.rule = rules
       const PluginName = Plugin.name
-      const PluginRule = Plugin.rule
 
       const pluginKey = pluginsLoader.priority.find((p) => p.plugin.name === PluginName)
       pluginKey.plugin.rule = rules.map((r) => {

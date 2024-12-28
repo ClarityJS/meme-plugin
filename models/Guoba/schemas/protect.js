@@ -35,7 +35,7 @@ export default [
     component: 'Select',
     bottomHelpMessage: '设置表情保护列表',
     componentProps: {
-      options: list,
+      options: await list(),
       mode: 'multiple',
       allowClear: true
     }
