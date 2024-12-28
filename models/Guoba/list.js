@@ -1,7 +1,7 @@
-import Meme from '../meme.js';
+import Meme from '../meme.js'
 
-export default function list() {
+export default function list () {
   return Array.from(new Set(
     Object.values(Meme.infoMap || {}).flatMap(info => info.keywords)
-  )).map(keyword => ({ label: keyword, value: keyword }));
+  )).map(keyword => ({ label: keyword, value: keyword }))
 }

@@ -64,52 +64,30 @@ export class update extends plugin {
       await e.reply('只有主人才能更新表情包数据')
       return
     }
+
     await e.reply('开始更新表情包数据中, 请稍后...')
+
     try {
       if (!Config.meme.url) {
         await Tools.downloadMemeData(true)
       } else {
         await Tools.generateMemeData(true)
       }
-    }
-    catch (error) {
-      logger.error(`表情包数据更新出错: ${error.message}`)
-      await e.reply(`表情包数据更新失败: ${error.message}`)
-      return true
-    }
-
-    try {
-      const prefix = Config.meme.forceSharp ? '^#' : '^#?'
-      const rules = []
-
-      Object.entries(Meme.infoMap).forEach(([key, value]) => {
-        value.keywords.forEach((keyword) => {
-          const escapedKeyword = keyword.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
-          const regex = new RegExp(`${prefix}(${escapedKeyword})(.*)`, 'i')
-          rules.push({ reg: regex, fnc: 'meme' })
-        })
-      })
 
       Meme.loaded = false
       await Meme.load()
       const Plugin = new meme()
-      Plugin.rule = rules
-      const PluginName = Plugin.name
+      const pluginName = Plugin.name
+      const pluginKey = pluginsLoader.priority.find((p) => p.plugin.name === pluginName)
 
-      const pluginKey = pluginsLoader.priority.find((p) => p.plugin.name === PluginName)
-      pluginKey.plugin.rule = rules.map((r) => {
-        if (typeof r.reg === 'string') {
-          r.reg = new RegExp(r.reg.replace(/^\/|\/[gimsuy]*$/g, ''), 'i')
-        }
-        return r
-      })
-      meme.rulesInitialized = false
-      await Plugin.initRules()
+      pluginKey.plugin.rulesInitialized = false
+
+      await pluginKey.plugin.initRules()
+
       await e.reply('表情包数据更新完成')
     } catch (error) {
       logger.error(`表情包数据更新出错: ${error.message}`)
       await e.reply(`表情包数据更新失败: ${error.message}`)
-      return true
     }
   }
 
