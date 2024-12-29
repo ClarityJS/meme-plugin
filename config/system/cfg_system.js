@@ -48,6 +48,14 @@ export const cfgSchema = {
         desc: '是否开启使用用户昵称，不开则默认使用表情名称',
         type: 'boolean',
         fileName: 'meme'
+      },
+      autoRes: {
+        title: '自动更新资源',
+        key: '自动更新资源',
+        def: true,
+        desc: '是否自动更新表情包资源，开启后每日凌晨会自动更新',
+        type: 'boolean',
+        fileName: 'meme'
       }
     }
   },

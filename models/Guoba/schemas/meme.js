@@ -38,5 +38,11 @@ export default [
     label: '强制触发',
     component: 'Switch',
     bottomHelpMessage: '是否强制使用#触发, 开启后必须使用#触发'
+  },
+  {
+    field: 'meme.autoRes',
+    label: '自动更新资源',
+    component: 'Switch',
+    bottomHelpMessage: '是否自动更新表情包资源，开启后每日凌晨会自动更新'
   }
 ]

@@ -15,3 +15,6 @@ reply: false
 
 # 是否开启默认使用用户昵称
 userName: false
+
+# 是否开启每日自动更新表情包数据
+autoRes: true
