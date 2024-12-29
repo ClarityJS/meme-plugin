@@ -27,6 +27,7 @@ jobs:
         with:
           release-type: node
           target-branch: "${{ github.ref_name }}"
+          skip-github-release: true
           bump-minor-pre-major: true 
           draft: false 
           fork: false 
