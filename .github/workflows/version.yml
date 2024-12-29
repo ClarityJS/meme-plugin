@@ -27,6 +27,7 @@ jobs:
           bump-minor-pre-major: true 
           draft: false 
           fork: false 
+          version-file: package.json
           pull-request-title-pattern: "✨ 更新版本至 {{version}} 🎉" 
           pull-request-header: |
             ## 📢 项目版本更新通知

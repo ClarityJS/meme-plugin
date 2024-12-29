@@ -49,6 +49,9 @@ export class list extends plugin {
         {
           emojiList,
           total
+        },
+        {
+          type: 'base64'
         }
       )
       await e.reply(img)
