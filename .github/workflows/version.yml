@@ -15,18 +15,26 @@ jobs:
     steps:
       - name: 检出代码
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
 
-      - name: 设置 Node.js 和 pnpm 环境
-        uses: pnpm/action-setup@v4
-        with:
-          version: 9
 
-      - name: 版本更新
+      - name: Run Release Please
         uses: googleapis/release-please-action@v4
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          config-file: .release-please-config.json
-          manifest-file: .release-please-manifest.json
-          target-branch: ${{ github.ref_name }}
+          release-type: node
+          version-file: package.json  
+          skip-github-release: true 
+          pull-request-title-pattern: "✨ 更新版本至 {{version}} 🎉"
+          pull-request-header: |
+            ## 📢 项目版本更新通知
+            
+            以下更新由 Release Please Action 自动生成。
+          changelog-types: |
+            feat: 🚀 新功能
+            fix: 🐛 修复
+            perf: ⚡ 性能优化
+            docs: 📝 文档
+            refactor: ♻ 代码重构
+            test: ✅ 测试更新
+            chore: 🔧 构建与工具
+          bootstrap-sha: HEAD
