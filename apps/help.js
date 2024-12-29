@@ -77,6 +77,7 @@ export class help extends plugin {
       }
     )
     await e.reply(img)
+    return true
   }
 
   async versionInfo (e) {
@@ -89,5 +90,6 @@ export class help extends plugin {
       }
     )
     await e.reply(img)
+    return true
   }
 }

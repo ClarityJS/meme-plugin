@@ -48,15 +48,15 @@ export class meme extends plugin {
         matchedKeyword = match[1]
         return true
       }
-      return false
+      return true
     })
 
-    if (!matchedKeyword) return false
+    if (!matchedKeyword) return true
 
     const memeKey = await Tools.getKey(matchedKeyword)
 
     if (!memeKey) {
-      return false
+      return true
     }
 
     // 用户权限检查
