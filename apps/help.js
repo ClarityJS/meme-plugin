@@ -67,27 +67,27 @@ export class help extends plugin {
       diyCfg.helpCfg || {},
       sysCfg.helpCfg || {}
     )
-    return Render.render(
+    const img = Render.render(
       'help/index',
       {
         helpCfg: helpConfig,
         helpGroup,
         ...themeData,
         element: 'default'
-      },
-      { e }
+      }
     )
+    await e.reply(img)
   }
 
   async versionInfo (e) {
-    return Render.render(
+    const img = Render.render(
       'help/version-info',
       {
         currentVersion: Version.ver,
         changelogs: Version.logs,
         elem: 'elem'
-      },
-      { e }
+      }
     )
+    await e.reply(img)
   }
 }

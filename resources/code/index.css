@@ -1,3 +1,6 @@
+.container {
+    background-image: url('./imgs/bg.png');
+}
 .info_box {
     padding: 20px;
     background: linear-gradient(135deg, rgba(50, 50, 70, 0.95), rgba(35, 38, 57, 0.95));
@@ -75,11 +78,11 @@
     color: #ffffff;
     line-height: 1.6;
     word-break: break-word;
-    white-space: pre-wrap; /* 保留换行 */
+    white-space: pre-wrap;
 }
 
 .cfg-li span:last-child.highlight {
-    color: #ffd700; /* 提交标题特殊高亮显示 */
+    color: #ffd700;
     font-weight: 600;
 }
 

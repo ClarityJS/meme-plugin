@@ -117,11 +117,11 @@ export class update extends plugin {
       }
 
 
-      const img = await Render.render('code/index', {
-        commitInfo,
-        branchName: result.branchName
-      },
-      { e }
+      const img = await Render.render('code/index',
+        {
+          commitInfo,
+          branchName: result.branchName
+        }
       )
 
       if (isTask) {

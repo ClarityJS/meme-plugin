@@ -44,11 +44,14 @@ export class list extends plugin {
 
       const total = emojiList.length
 
-      return Render.render(
+      const img = await Render.render(
         'meme/index',
-        { emojiList, total },
-        { e }
+        {
+          emojiList,
+          total
+        }
       )
+      await e.reply(img)
     } catch (error) {
       logger.error('加载表情列表失败:', error)
       await e.reply('加载表情列表失败，请稍后重试', true)
