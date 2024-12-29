@@ -23,13 +23,12 @@ jobs:
         with:
           version: 9
       - name: 执行 Release Please
-        uses: google-github-actions/release-please-action@v4
+        uses: googleapis/release-please-action@v4
         with:
           release-type: node
           target-branch: "${{ github.ref_name }}"
           skip-github-release: true
           bump-minor-pre-major: true 
-          draft: false 
           fork: false 
           version-file: package.json
           pull-request-title-pattern: "✨ 更新版本至 {{version}} 🎉" 
