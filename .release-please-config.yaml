@@ -1,0 +1,24 @@
+packages:
+  ".": # 表示根目录的 package
+    release-type: node
+    pull-request-title-pattern: "✨ 更新版本至 {{version}} 🎉"
+    pull-request-header: |
+      ## 📢 项目版本更新通知
+      
+      以下更新由 Release Please Action 自动生成。
+    changelog-sections:
+      - type: feat
+        section: 🚀 新功能
+      - type: fix
+        section: 🐛 修复
+      - type: perf
+        section: ⚡ 性能优化
+      - type: docs
+        section: 📝 文档
+      - type: refactor
+        section: ♻ 代码重构
+      - type: test
+        section: ✅ 测试更新
+      - type: chore
+        section: 🔧 构建与工具
+skip-github-release: true

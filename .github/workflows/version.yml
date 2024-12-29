@@ -22,26 +22,9 @@ jobs:
         uses: pnpm/action-setup@v4
         with:
           version: 9
-      - name: 执行 Release Please
+
+      - name: 版本更新
         uses: googleapis/release-please-action@v4
         with:
-          release-type: node
-          target-branch: "${{ github.ref_name }}"
-          skip-github-release: true
-          bump-minor-pre-major: true 
-          fork: false 
-          version-file: package.json
-          pull-request-title-pattern: "✨ 更新版本至 {{version}} 🎉" 
-          pull-request-header: |
-            ## 📢 项目版本更新通知
-            
-            以下更新由 Release Please Action 自动生成。
-
-          changelog-types: |
-            feat: 🚀 新功能
-            fix: 🐛 修复
-            perf: ⚡ 性能优化
-            docs: 📝 文档
-            refactor: ♻ 代码重构
-            test: ✅ 测试更新
-            chore: 🔧 构建与工具
+          token: ${{ secrets.GITHUB_TOKEN }}
+          config-file: .release-please-config.json
