@@ -3,11 +3,13 @@ import access from './access.js'
 import meme from './meme.js'
 import protect from './protect.js'
 import other from './other.js'
+import stats from './stats.js'
 
 export const schemas = [
   meme,
   access,
   protect,
+  stats,
   other
 ].flat()
 
@@ -16,7 +18,8 @@ export function getConfigData () {
     meme: Config.meme,
     other: Config.other,
     access: Config.access,
-    protect: Config.protect
+    protect: Config.protect,
+    stats: Config.stats
   }
 }
 

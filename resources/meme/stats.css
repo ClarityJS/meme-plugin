@@ -3,6 +3,7 @@
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
+    width: 60%;
 }
 
 .info_box {
@@ -14,8 +15,6 @@
     align-items: center;
     box-sizing: border-box;
     overflow: visible;
-    min-width: 90%;
-    max-width: 100%;
     margin: 0 auto;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.06);
     border: 1px solid #d2d2d2;
