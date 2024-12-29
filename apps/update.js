@@ -102,6 +102,10 @@ export class update extends plugin {
       }
 
       if (storedSHA === remoteSHA) {
+        if (storedSHA !== remoteSHA) {
+          await redis.set(shaKey, remoteSHA)
+        }
+
         if (isTask) {
           await e.reply('当前已是最新版本，无需更新。')
         }
@@ -115,7 +119,6 @@ export class update extends plugin {
         content: latestCommit.message.content,
         commitUrl: latestCommit.commitUrl
       }
-
 
       const img = await Render.render('code/index',
         {
@@ -154,5 +157,6 @@ export class update extends plugin {
       }
     }
   }
+
 
 }
