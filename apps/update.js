@@ -1,4 +1,4 @@
-import { Version, Config } from '../components/index.js'
+import { Version, Config, Render } from '../components/index.js'
 import { update as Update } from '../../other/update.js'
 import { Tools, Code, Meme } from '../models/index.js'
 import { meme } from './meme.js'
@@ -102,19 +102,27 @@ export class update extends plugin {
       }
 
       if (storedSHA === remoteSHA) {
-        if (!isTask) {
+        if (isTask) {
           await e.reply('当前已是最新版本，无需更新。')
         }
         return
       }
 
-      const commitInfo = [
-        '[清语表情更新推送]',
-        `提交者：${latestCommit.committer.login}`,
-        `时间：${latestCommit.commitTime}`,
-        `提交信息：${latestCommit.message.title}`,
-        `地址：${latestCommit.commitUrl}`
-      ].join('\n')
+      const commitInfo = {
+        committer: latestCommit.committer.login,
+        commitTime: latestCommit.commitTime,
+        title: latestCommit.message.title,
+        content: latestCommit.message.content,
+        commitUrl: latestCommit.commitUrl
+      }
+
+
+      const img = await Render.render('code/index', {
+        commitInfo,
+        branchName: result.branchName
+      },
+      { e }
+      )
 
       if (isTask) {
         const masterQQs = Config.masterQQ.filter(qq => {
@@ -128,14 +136,14 @@ export class update extends plugin {
 
         for (let qq of masterQQs) {
           try {
-            await Bot.pickUser(qq).sendMsg(commitInfo)
+            await Bot.pickUser(qq).sendMsg(img)
             break
           } catch (sendError) {
-            logger.error(`发送更新通知给 ${qq} 时出错: ${sendError.message}`)
+            logger.info(`发送消息给 ${qq} 失败: ${sendError.message}`)
           }
         }
       } else {
-        await e.reply(commitInfo)
+        await e.reply(img)
       }
 
       await redis.set(shaKey, remoteSHA)
@@ -146,4 +154,5 @@ export class update extends plugin {
       }
     }
   }
+
 }
