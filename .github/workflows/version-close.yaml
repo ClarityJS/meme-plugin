@@ -1,0 +1,70 @@
+name: 删除PR版本分支并推送Tag
+
+on:
+  pull_request:
+    types: [closed]
+
+jobs:
+  sync-main-to-dev:
+    if: github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: 检出代码
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: 同步分支
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git fetch origin
+          git checkout dev
+          git reset --hard origin/main 
+          git push origin dev --force 
+
+  delete-branch:
+    if: github.event.pull_request.merged == true && startsWith(github.event.pull_request.head.ref, 'version/')
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: 检出代码
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: 删除版本分支
+        run: |
+          git push origin --delete ${{ github.event.pull_request.head.ref }} || echo "版本分支已不存在，跳过删除。"
+
+  push-tag:
+    if: github.event.pull_request.merged == true && startsWith(github.event.pull_request.head.ref, 'version/')
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: 检出主分支代码
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: 推送 Tag 到主分支
+        env:
+          BRANCH_NAME: ${{ github.event.pull_request.head.ref }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git fetch origin main
+          git checkout main
+          git reset --hard origin/main
+          
+          version=$(echo "${BRANCH_NAME}" | sed -n 's/version\/v$[0-9.]*$/\1/p')
+          if [ -z "$version" ]; then
+            echo "未找到有效版本号，跳过 Tag 推送。"
+            exit 1
+          fi
+          git tag -f "v$version"
+          git push origin -f "v$version"
