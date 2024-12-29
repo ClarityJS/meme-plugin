@@ -1,5 +1,5 @@
 import fs from 'fs'
-import { Version, Data, Config } from '../components/index.js'
+import { Version, Data } from '../components/index.js'
 import Request from './request.js'
 
 const Utils = {
