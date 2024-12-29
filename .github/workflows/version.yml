@@ -17,24 +17,33 @@ jobs:
         uses: actions/checkout@v4
 
 
+name: Release Please
+
+on:
+  push:
+    branches:
+      - dev
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
       - name: Run Release Please
         uses: googleapis/release-please-action@v4
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           release-type: node
-          version-file: package.json  
-          skip-github-release: true 
-          pull-request-title-pattern: "✨ 更新版本至 {{version}} 🎉"
-          pull-request-header: |
-            ## 📢 项目版本更新通知
-            
-            以下更新由 Release Please Action 自动生成。
-          changelog-types: |
-            feat: 🚀 新功能
-            fix: 🐛 修复
-            perf: ⚡ 性能优化
-            docs: 📝 文档
-            refactor: ♻ 代码重构
-            test: ✅ 测试更新
-            chore: 🔧 构建与工具
-          bootstrap-sha: HEAD
+          path: .
+          target-branch: ${{ github.ref_name }} 
+          skip-github-release: true
+
