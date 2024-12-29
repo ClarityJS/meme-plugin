@@ -15,14 +15,10 @@ jobs:
     steps:
       - name: 检出代码
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
 
-      - name: 更新版本
+      - name: 版本更新
         uses: googleapis/release-please-action@v4
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          bump-minor-pre-major: true
-          version-file: package.json
-          fork: false
-
+          config-file: .release-please-config.json
+          target-branch: ${{ github.ref_name }}
