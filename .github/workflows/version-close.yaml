@@ -40,31 +40,34 @@ jobs:
         run: |
           git push origin --delete ${{ github.event.pull_request.head.ref }} || echo "版本分支已不存在，跳过删除。"
 
-  push-tag:
-    if: github.event.pull_request.merged == true && startsWith(github.event.pull_request.head.ref, 'version/')
-    runs-on: ubuntu-latest
-    permissions:
-      contents: write
-    steps:
-      - name: 检出主分支代码
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
+push-tag:
+  if: github.event.pull_request.merged == true && startsWith(github.event.pull_request.head.ref, 'version/')
+  runs-on: ubuntu-latest
+  permissions:
+    contents: write
+  steps:
+    - name: 检出主分支代码
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
 
-      - name: 推送 Tag 到主分支
-        env:
-          BRANCH_NAME: ${{ github.event.pull_request.head.ref }}
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git fetch origin main
-          git checkout main
-          git reset --hard origin/main
-          
-          version=$(echo "${BRANCH_NAME}" | sed -n 's/version\/v$[0-9.]*$/\1/p')
-          if [ -z "$version" ]; then
-            echo "未找到有效版本号，跳过 Tag 推送。"
-            exit 1
-          fi
-          git tag -f "v$version"
-          git push origin -f "v$version"
+    - name: 推送 Tag 到主分支
+      env:
+        BRANCH_NAME: ${{ github.event.pull_request.head.ref }}
+      run: |
+        git config user.name "github-actions[bot]"
+        git config user.email "github-actions[bot]@users.noreply.github.com"
+        git fetch origin main
+        git checkout main
+        git reset --hard origin/main
+        
+        # 去除 "version/"，提取版本号
+        version=${BRANCH_NAME#version/}
+        if [ -z "$version" ]; then
+          echo "未找到有效版本号，跳过 Tag 推送。"
+          exit 1
+        fi
+
+        # 创建并推送 Tag
+        git tag -f "v$version"
+        git push origin -f "v$version"
