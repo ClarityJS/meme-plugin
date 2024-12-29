@@ -26,6 +26,7 @@ jobs:
         uses: google-github-actions/release-please-action@v4
         with:
           release-type: node
+          target-branch: "${{ github.ref_name }}"
           bump-minor-pre-major: true 
           draft: false 
           fork: false 
