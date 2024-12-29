@@ -27,4 +27,5 @@ jobs:
         uses: googleapis/release-please-action@v4
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
+          config-file: .release-please-config.yaml
           target-branch: ${{ github.ref_name }}
