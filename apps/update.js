@@ -86,7 +86,6 @@ export class update extends plugin {
       await e.reply(`表情包数据更新失败: ${error.message}`)
     }
   }
-
   async checkUpdate (isTask = false, e = this.e) {
     try {
       const { owner, repo, currentBranch } = await Code.gitRepo.getRepo()
@@ -97,15 +96,11 @@ export class update extends plugin {
       let storedSHA = await redis.get(shaKey)
 
       if (!storedSHA) {
-        storedSHA = result.localVersion
-        await redis.set(shaKey, storedSHA)
+        await redis.set(shaKey, remoteSHA)
+        return
       }
 
       if (storedSHA === remoteSHA) {
-        if (storedSHA !== remoteSHA) {
-          await redis.set(shaKey, remoteSHA)
-        }
-
         if (isTask) {
           await e.reply('当前已是最新版本，无需更新。')
         }
@@ -120,12 +115,10 @@ export class update extends plugin {
         commitUrl: latestCommit.commitUrl
       }
 
-      const img = await Render.render('code/index',
-        {
-          commitInfo,
-          branchName: result.branchName
-        }
-      )
+      const img = await Render.render('code/index', {
+        commitInfo,
+        branchName: result.branchName
+      })
 
       if (isTask) {
         const masterQQs = Config.masterQQ.filter(qq => {
@@ -148,7 +141,6 @@ export class update extends plugin {
       } else {
         await e.reply(img)
       }
-
       await redis.set(shaKey, remoteSHA)
     } catch (error) {
       logger.error(`检测版本时出错: ${error.message}`)
