@@ -1,6 +1,6 @@
 import { Version, Config } from '../components/index.js'
 import { update as Update } from '../../other/update.js'
-import { Tools, checkRepo, Meme } from '../models/index.js'
+import { Tools, Code, Meme } from '../models/index.js'
 import { meme } from './meme.js'
 import pluginsLoader from '../../../lib/plugins/loader.js'
 
@@ -29,20 +29,16 @@ export class update extends plugin {
         }
       ]
     })
-    if(Config.other.checkRepo){
+    if (Config.other.checkRepo) {
       this.task = {
         name: '清语表情:仓库更新检测',
         cron: '0 0/20 * * * ?',
         log: false,
         fnc: () => {
-          this.check(true)
+          this.checkUpdate(true)
         }
       }
     }
-  }
-
-  async checkUpdate (e = this.e) {
-    await this.check(false, e)
   }
   async update (e = this.e) {
     const Type = e.msg.includes('强制') ? '#强制更新' : '#更新'
@@ -91,9 +87,10 @@ export class update extends plugin {
     }
   }
 
-  async check (isTask = false, e = this.e) {
+  async checkUpdate (isTask = false, e = this.e) {
     try {
-      const result = await checkRepo.isUpToDate()
+      const { owner, repo, currentBranch } = await Code.gitRepo.getRepo()
+      const result = await Code.check.version(Version.Plugin_Path, owner, repo, currentBranch)
       const latestCommit = result.latestCommit
       const remoteSHA = latestCommit.sha
       const shaKey = `Yz:clarity-meme:update:commit:${result.branchName}`
@@ -134,6 +131,7 @@ export class update extends plugin {
             await Bot.pickUser(qq).sendMsg(commitInfo)
             break
           } catch (sendError) {
+            logger.error(`发送更新通知给 ${qq} 时出错: ${sendError.message}`)
           }
         }
       } else {
@@ -148,6 +146,4 @@ export class update extends plugin {
       }
     }
   }
-
-
 }
