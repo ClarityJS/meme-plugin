@@ -15,30 +15,10 @@ jobs:
     steps:
       - name: 检出代码
         uses: actions/checkout@v4
-
-
-name: Release Please
-
-on:
-  push:
-    branches:
-      - dev
-
-permissions:
-  contents: write
-  pull-requests: write
-
-jobs:
-  release:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
-      - name: Run Release Please
+      - name: 更新版本
         uses: googleapis/release-please-action@v4
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
