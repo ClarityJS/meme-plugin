@@ -1,6 +1,6 @@
 {
   "name": "clarity-meme",
-  "version": "1.4.7",
+  "version": "1.0.0",
   "author": "wuliya",
   "type": "module",
   "dependencies": {
