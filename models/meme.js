@@ -64,24 +64,8 @@ const Meme = {
     }
   },
 
-  /**、
-   * 获取表情包键值
-   */
-  getKey (keyword) {
-    if (!this.loaded) {
-      this.load()
-    }
-    for (const [key, value] of Object.entries(this.infoMap)) {
-      if (value.keywords.includes(keyword)) {
-        return key
-      }
-    }
-    return null
-  },
-
   /**
  * 获取表情包信息
- * @param {string} memeKey
  */
   getInfo (memeKey) {
     if (!this.loaded) {

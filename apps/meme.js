@@ -53,7 +53,7 @@ export class meme extends plugin {
 
     if (!matchedKeyword) return false
 
-    const memeKey = await Tools.keywordToKey(matchedKeyword)
+    const memeKey = await Tools.getKey(matchedKeyword)
 
     if (!memeKey) {
       return false

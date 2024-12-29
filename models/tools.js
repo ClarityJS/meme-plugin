@@ -76,10 +76,11 @@ const Tools = {
       throw error
     }
   },
+
   /**
-   * 关键词转键值
+   * 将关键字转换为表情包键
    */
-  async keywordToKey (keyword) {
+  getKey (keyword) {
     for (const [key, value] of Object.entries(Meme.infoMap)) {
       if (value.keywords.includes(keyword)) {
         return key
@@ -87,13 +88,17 @@ const Tools = {
     }
     return null
   },
+  getKeywords (memeKey) {
+    const memeInfo = Meme.infoMap?.[memeKey]
+    return memeInfo?.keywords || null
+  },
   /**
    * 检查是否在禁用表情列表中
    */
   async isBlacklisted (input) {
     const blacklistedKeys = await Promise.all(
       Config.access.blackList.map(async (item) => {
-        return await this.keywordToKey(item) || item
+        return await this.getKey(item) || item
       })
     )
 
@@ -101,7 +106,7 @@ const Tools = {
       return true
     }
 
-    const memeKey = await this.keywordToKey(input)
+    const memeKey = await this.getKey(input)
     return blacklistedKeys.includes(memeKey)
   }
 

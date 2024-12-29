@@ -1,5 +1,8 @@
 .container {
     background-image: url('./imgs/bg.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 .info_box {
     padding: 20px;

@@ -58,6 +58,13 @@ class Config {
     return this.getDefOrConfig('protect')
   }
 
+  /**
+   * 统计设置
+   */
+  get stats () {
+    return this.getDefOrConfig('stats')
+  }
+
   /** 其他设置 */
   get other () {
     return this.getDefOrConfig('other')

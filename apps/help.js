@@ -67,7 +67,7 @@ export class help extends plugin {
       diyCfg.helpCfg || {},
       sysCfg.helpCfg || {}
     )
-    const img = Render.render(
+    const img = await Render.render(
       'help/index',
       {
         helpCfg: helpConfig,
@@ -80,7 +80,7 @@ export class help extends plugin {
   }
 
   async versionInfo (e) {
-    const img = Render.render(
+    const img = await Render.render(
       'help/version-info',
       {
         currentVersion: Version.ver,

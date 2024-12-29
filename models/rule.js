@@ -120,7 +120,7 @@ const Rule = {
 
 
           const protectedMemeKeys = await Promise.all(
-            Config.protect.list.map(async (item) => await Tools.keywordToKey(item) || item)
+            Config.protect.list.map(async (item) => await Tools.getKey(item) || item)
           )
           isProtectedMeme = protectedMemeKeys.includes(memeKey)
 
@@ -212,7 +212,10 @@ const Rule = {
       } else {
         await e.reply(segment.image(result), Config.meme.reply)
       }
-
+      if(Config.stats.enable){
+        const redisKey = `Yz:clarity-meme:stats:${memeKey}`
+        await redis.set(redisKey, (parseInt(await redis.get(redisKey)) || 0) + 1)
+      }
       return true
     } catch (error) {
       logger.error(`[清语表情] 表情生成失败: ${error.message}`)

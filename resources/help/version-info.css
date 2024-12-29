@@ -13,7 +13,7 @@ body {
 }
 .container {
   background: url("../common/bg/bg-anemo.jpg") top left repeat;
-  background-size: 100% auto;
+  background-size: cover;
   width: 600px;
   padding: 10px 0 10px 0;
 }
