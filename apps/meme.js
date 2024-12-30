@@ -46,10 +46,12 @@ export class meme extends plugin {
       const match = message.match(rule.reg)
       if (match) {
         matchedKeyword = match[1]
-        return false
+        return true
       }
       return false
     })
+
+    if (!matchedKeyword) return true
 
     const memeKey = await Tools.getKey(matchedKeyword)
 
