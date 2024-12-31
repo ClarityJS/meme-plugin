@@ -1,3 +1,19 @@
+# 变更日志
+
+## [1.6.0](https://github.com/wuliya336/clarity-meme/compare/v1.5.1...v1.6.0) (2024-12-31)
+
+### ✨ 新功能
+
+* 添加发布脚本并优化更新功能 ([2a022e5](https://github.com/wuliya336/clarity-meme/commit/2a022e5d329cf2bd4a75908496d6338d3384531d))
+
+### 🐛 修复
+
+* 修正获取变更内容的 awk 命令以正确提取 CHANGELOG ([e9e68bf](https://github.com/wuliya336/clarity-meme/commit/e9e68bfb293fe73f8cd908bb616d9b393aacc3ea))
+
+### 🔄 持续集成
+
+* 更新 CHANGELOG.md 格式并调整版本检查逻辑 ([9e853c3](https://github.com/wuliya336/clarity-meme/commit/9e853c383ffd33f8ab3d1acb6d237b7b099933d7))
+
 ## 1.5.0 
 此版本已完成大部分功能ⁿᵉʷ
 
