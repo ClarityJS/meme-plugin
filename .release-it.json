@@ -1,0 +1,58 @@
+{
+  "git": {
+    "commit": false,
+    "tag": false,
+    "push": false,
+    "requireCleanWorkingDir": false
+  },
+  "github": {
+    "release": false
+  },
+  "npm": {
+    "publish": false
+  },
+  "plugins": {
+    "@release-it/conventional-changelog": {
+      "infile": "CHANGELOG.md",
+      "preset": {
+        "name": "conventionalcommits",
+        "types": [
+          {
+            "type": "feat",
+            "section": "✨ 新功能"
+          },
+          {
+            "type": "fix",
+            "section": "🐛 修复"
+          },
+          {
+            "type": "docs",
+            "section": "📚 文档更新"
+          },
+          {
+            "type": "style",
+            "section": "🎨 代码风格"
+          },
+          {
+            "type": "refactor",
+            "section": "♻️ 重构"
+          },
+          {
+            "type": "perf",
+            "section": "⚡ 性能优化"
+          },
+          {
+            "type": "test",
+            "section": "✅ 测试"
+          },
+          {
+            "type": "chore",
+            "section": "🔧 其他更新"
+          }
+        ]
+      },
+      "header": "# 变更日志",
+      "template": "{{#each commitGroups}}{{#if commits}}\n### {{title}}\n\n{{#each commits}}- {{header}}\n{{/each}}\n{{/if}}{{/each}}"
+    }
+  }
+}

@@ -1,5 +1,5 @@
 import { Config } from '../components/index.js'
-import { Meme, Utils, Args } from '../models/index.js'
+import { Meme, Utils, Args, Tools } from '../models/index.js'
 
 export class meme extends plugin {
   constructor () {
@@ -26,7 +26,7 @@ export class meme extends plugin {
 
     Meme.load()
 
-    const memeKey = Meme.getKey(keyword)
+    const memeKey = Tools.getKey(keyword)
     if (!memeKey) {
       await e.reply('未找到相关表情包详情', true)
       return true
