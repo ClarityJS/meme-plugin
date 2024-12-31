@@ -76,7 +76,15 @@ const Tools = {
       throw error
     }
   },
-
+  /**
+ * 获取表情包信息
+ */
+  getInfo (memeKey) {
+    if (!this.loaded) {
+      this.load()
+    }
+    return this.infoMap?.[memeKey] || null
+  },
   /**
    * 将关键字转换为表情包键
    */
@@ -88,6 +96,9 @@ const Tools = {
     }
     return null
   },
+  /**
+   * 获取表情包关键字
+   */
   getKeywords (memeKey) {
     const memeInfo = Meme.infoMap?.[memeKey]
     return memeInfo?.keywords || null

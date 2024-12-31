@@ -94,7 +94,7 @@ export class meme extends plugin {
       return false
     }
 
-    const memeInfo = Meme.getInfo(memeKey)
+    const memeInfo = Tools.getInfo(memeKey)
     const userText = message.replace(new RegExp(`^#?${matchedKeyword}`, 'i'), '').trim()
     return await Rule.meme(e, memeKey, memeInfo, userText)
   }

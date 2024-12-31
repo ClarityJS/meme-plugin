@@ -32,7 +32,7 @@ export class meme extends plugin {
       return true
     }
 
-    const memeDetails = Meme.getInfo(memeKey)
+    const memeDetails = Tools.getInfo(memeKey)
     if (!memeDetails) {
       await e.reply('未找到相关表情包详情', true)
       return true

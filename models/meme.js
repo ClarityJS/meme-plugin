@@ -65,16 +65,6 @@ const Meme = {
   },
 
   /**
- * 获取表情包信息
- */
-  getInfo (memeKey) {
-    if (!this.loaded) {
-      this.load()
-    }
-    return this.infoMap?.[memeKey] || null
-  },
-
-  /**
    * 发送表情包请求
    * @param {string} endpoint 请求地址
    * @param {object} params 请求参数

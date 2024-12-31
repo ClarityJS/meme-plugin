@@ -1,0 +1,22 @@
+commit_message=$(cat "$1")
+if echo "$commit_message" | grep -q "^feat"; then
+  echo "✨ $commit_message" > "$1"
+elif echo "$commit_message" | grep -q "^fix"; then
+  echo "🐛 $commit_message" > "$1"
+elif echo "$commit_message" | grep -q "^docs"; then
+  echo "📚 $commit_message" > "$1"
+elif echo "$commit_message" | grep -q "^style"; then
+  echo "🎨 $commit_message" > "$1"
+elif echo "$commit_message" | grep -q "^refactor"; then
+  echo "♻️ $commit_message" > "$1"
+elif echo "$commit_message" | grep -q "^perf"; then
+  echo "⚡️ $commit_message" > "$1"
+elif echo "$commit_message" | grep -q "^test"; then
+  echo "✅ $commit_message" > "$1"
+elif echo "$commit_message" | grep -q "^chore"; then
+  echo "🔧 $commit_message" > "$1"
+elif echo "$commit_message" | grep -q "^ci"; then
+  echo "🤖 $commit_message" > "$1"
+else
+  echo "🎉 $commit_message" > "$1"
+fi
