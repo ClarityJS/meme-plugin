@@ -1,4 +1,4 @@
-name: 删除PR版本分支并推送Tag和Release
+name: 删除PR版本分支并推送Tag
 
 on:
   pull_request:
@@ -25,9 +25,8 @@ jobs:
           git reset --hard origin/main 
           git push origin dev --force 
 
-  delete-branch-and-push-tag:
-    if: github.event.pull_request.merged == true && startsWith(github.event.pull_request.head.ref, 'release/v')
-    needs: sync-main-to-dev
+  delete-branch:
+    if: github.event.pull_request.merged == true && startsWith(github.event.pull_request.head.ref, 'version/')
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -37,15 +36,8 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: 推送Tag和删除分支
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: 删除版本分支
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          VERSION=$(echo "${{ github.event.pull_request.head.ref }}" | sed 's|release/v||')
-          git tag -a "v$VERSION" -m "Release version $VERSION"
-          git push origin "v$VERSION"
           git push origin --delete ${{ github.event.pull_request.head.ref }} || echo "版本分支已不存在，跳过删除。"
 
       - name: 提取版本号
