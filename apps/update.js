@@ -71,16 +71,13 @@ export class update extends plugin {
     return up.updateLog()
   }
 
-  async updateRes (isTask = true, e = this.e) {
+  async updateRes (isTask = false, e = this.e) {
     if (!isTask && !e.isMaster) {
       await e.reply('只有主人才能更新表情包数据')
-      logger.error('只有主人才能更新表情包数据')
       return
     }
 
-    if (isTask) {
-      logger.mark('开始检查更新')
-    } else {
+    if (!isTask) {
       await e.reply('开始更新表情包数据中, 请稍后...')
     }
 
@@ -101,19 +98,16 @@ export class update extends plugin {
 
       await pluginKey.plugin.initRules()
 
-      if (isTask) {
-        logger.mark('表情包数据更新完成')
-      } else {
+      if (!isTask) {
         await e.reply('表情包数据更新完成')
       }
-
+      logger.mark('表情包数据更新完成')
       return true
     } catch (error) {
-      if (isTask) {
-        logger.error(`表情包数据更新出错: ${error.message}`)
-      } else {
+      if (!isTask) {
         await e.reply(`表情包数据更新失败: ${error.message}`)
       }
+      logger.error(`表情包数据更新出错: ${error.message}`)
       return true
     }
   }

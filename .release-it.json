@@ -26,12 +26,16 @@
             "section": "🐛 修复"
           },
           {
+            "type": "style",
+            "section": "🎨 代码风格"
+          },
+          {
             "type": "docs",
             "section": "📚 文档更新"
           },
           {
-            "type": "style",
-            "section": "🎨 代码风格"
+            "type": "chore",
+            "section": "🔧 其他更新"
           },
           {
             "type": "refactor",
@@ -46,13 +50,37 @@
             "section": "✅ 测试"
           },
           {
-            "type": "chore",
-            "section": "🔧 其他更新"
+            "type": "ci",
+            "section": "🔄 持续集成"
+          },
+          {
+            "type": "build",
+            "section": "🏗️ 构建系统"
+          },
+          {
+            "type": "revert",
+            "section": "⏪ 回滚"
+          },
+          {
+            "type": "deps",
+            "section": "📦 依赖更新"
+          },
+          {
+            "type": "infra",
+            "section": "🛠️ 基础设施"
+          },
+          {
+            "type": "security",
+            "section": "🔒 安全更新"
+          },
+          {
+            "type": "env",
+            "section": "🌍 环境变量更新"
           }
         ]
       },
       "header": "# 变更日志",
-      "template": "{{#each commitGroups}}{{#if commits}}\n### {{title}}\n\n{{#each commits}}- {{header}}\n{{/each}}\n{{/if}}{{/each}}"
+      "template": "{{#each commitGroups}}{{#if commits}}\n### {{title}}\n\n{{#each commits}}{{#unless header.match('[skip]')}}- {{header}}\n{{/unless}}{{/each}}\n{{/if}}{{/each}}"
     }
   }
 }
