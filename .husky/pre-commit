@@ -1,5 +1,2 @@
 pnpm lint:fix
-if [ -n "$(git status --porcelain)" ]; then
-  git add .
-  HUSKY_SKIP_HOOKS=0 git commit --amend --no-edit
-fi
+git add .
