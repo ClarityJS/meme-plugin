@@ -55,8 +55,8 @@ jobs:
         run: |
           VERSION=$(pnpm pkg get version | tr -d '"')
           RELEASE_BRANCH="release/v$VERSION"
-          CHANGELOG=$(awk 'BEGIN {flag=0} 
-            /^## \[/ {if (flag) exit; flag=1} 
+          CHANGELOG=$(awk 'BEGIN {flag=0}
+            /^## / {if (flag) exit; flag=1}
             flag {print}' CHANGELOG.md)
           BODY=$(printf "### 更新日志\n\n%s\n" "$CHANGELOG")
           EXISTING_PR=$(gh pr list --head "$RELEASE_BRANCH" --base main --json number --jq '.[0].number')

@@ -57,8 +57,8 @@ jobs:
       - name: 获取变更内容
         id: extract_changelog
         run: |
-          CHANGELOG=$(awk 'BEGIN {flag=0} 
-            /^## \[/ {if (flag) exit; flag=1} 
+          CHANGELOG=$(awk 'BEGIN {flag=0}
+            /^## / {if (flag) exit; flag=1}
             flag {print}' CHANGELOG.md)
           
           echo "changelog<<EOF" >> "$GITHUB_OUTPUT"
