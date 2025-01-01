@@ -91,9 +91,7 @@ export class help extends plugin {
         changelogs: Version.logs,
         elem: 'elem'
       },
-      {
-        type: 'base64'
-      }
+      true
     )
     await e.reply(img)
     return true

@@ -1,22 +1,93 @@
 commit_message=$(cat "$1")
-if echo "$commit_message" | grep -q "^feat"; then
-  echo "✨ $commit_message" > "$1"
-elif echo "$commit_message" | grep -q "^fix"; then
-  echo "🐛 $commit_message" > "$1"
-elif echo "$commit_message" | grep -q "^docs"; then
-  echo "📚 $commit_message" > "$1"
-elif echo "$commit_message" | grep -q "^style"; then
-  echo "🎨 $commit_message" > "$1"
-elif echo "$commit_message" | grep -q "^refactor"; then
-  echo "♻️ $commit_message" > "$1"
-elif echo "$commit_message" | grep -q "^perf"; then
-  echo "⚡️ $commit_message" > "$1"
-elif echo "$commit_message" | grep -q "^test"; then
-  echo "✅ $commit_message" > "$1"
-elif echo "$commit_message" | grep -q "^chore"; then
-  echo "🔧 $commit_message" > "$1"
-elif echo "$commit_message" | grep -q "^ci"; then
-  echo "🤖 $commit_message" > "$1"
+
+if echo "$commit_message" | grep -qP "^\s*(✨|🐛|📚|🎨|♻️|⚡️|✅|🔧|🤖|🎉|🚀|🔒|📦|🗑️|🚨|🔍|🌍|🎁|📝|📈|💄|🚧|🛠️|🌟|🎯|📌|💡|🎥|🔀|🧪|🏗️|🎼|🔖|📜|💬|🌐|⚙️|🔍|📊|🛡️|📤|🪄|🐳|🍎|📥|⏪|🔄|🧹|📱|🏷️|🗃️|📂|🧑‍💻|🌈|🎮|🍃|🥂|🎩|🚦|🌋|🎭|🧑‍🏫|🏅|🪟|🧩)"; then
+  echo "$commit_message" > "$1"
 else
-  echo "🎉 $commit_message" > "$1"
+  if echo "$commit_message" | grep -q "^feat"; then
+    echo "✨ $commit_message" > "$1"
+  elif echo "$commit_message" | grep -q "^fix"; then
+    echo "🐛 $commit_message" > "$1"
+  elif echo "$commit_message" | grep -q "^docs"; then
+    echo "📚 $commit_message" > "$1"
+  elif echo "$commit_message" | grep -q "^style"; then
+    echo "🎨 $commit_message" > "$1"
+  elif echo "$commit_message" | grep -q "^refactor"; then
+    echo "♻️ $commit_message" > "$1"
+  elif echo "$commit_message" | grep -q "^perf"; then
+    echo "⚡️ $commit_message" > "$1"
+  elif echo "$commit_message" | grep -q "^test"; then
+    echo "✅ $commit_message" > "$1"
+  elif echo "$commit_message" | grep -q "^chore"; then
+    echo "🔧 $commit_message" > "$1"
+  elif echo "$commit_message" | grep -q "^ci"; then
+    echo "🤖 $commit_message" > "$1"
+  elif echo "$commit_message" | grep -q "^build"; then
+    echo "📦 $commit_message" > "$1"
+  elif echo "$commit_message" | grep -q "^deploy"; then
+    echo "🚀 $commit_message" > "$1"
+  elif echo "$commit_message" | grep -q "^security"; then
+    echo "🔒 $commit_message" > "$1"
+  elif echo "$commit_message" | grep -q "^cleanup"; then
+    echo "🧹 $commit_message" > "$1"
+  elif echo "$commit_message" | grep -q "^lint"; then
+    echo "🚨 $commit_message" > "$1"
+  elif echo "$commit_message" | grep -q "^seo"; then
+    echo "🔍 $commit_message" > "$1"
+  elif echo "$commit_message" | grep -q "^i18n"; then
+    echo "🌍 $commit_message" > "$1"
+  elif echo "$commit_message" | grep -q "^gift"; then
+    echo "🎁 $commit_message" > "$1"
+  elif echo "$commit_message" | grep -q "^note"; then
+    echo "📝 $commit_message" > "$1"
+  elif echo "$commit_message" | grep -q "^analytics"; then
+    echo "📊 $commit_message" > "$1"
+  elif echo "$commit_message" | grep -q "^ui"; then
+    echo "💄 $commit_message" > "$1"
+  elif echo "$commit_message" | grep -q "^wip"; then
+    echo "🚧 $commit_message" > "$1"
+  elif echo "$commit_message" | grep -q "^tooling"; then
+    echo "🛠️ $commit_message" > "$1"
+  elif echo "$commit_message" | grep -q "^feature"; then
+    echo "🌟 $commit_message" > "$1"
+  elif echo "$commit_message" | grep -q "^goal"; then
+    echo "🎯 $commit_message" > "$1"
+  elif echo "$commit_message" | grep -q "^pin"; then
+    echo "📌 $commit_message" > "$1"
+  elif echo "$commit_message" | grep -q "^idea"; then
+    echo "💡 $commit_message" > "$1"
+  elif echo "$commit_message" | grep -q "^media"; then
+    echo "🎥 $commit_message" > "$1"
+  elif echo "$commit_message" | grep -q "^merge"; then
+    echo "🔀 $commit_message" > "$1"
+  elif echo "$commit_message" | grep -q "^experiment"; then
+    echo "🧪 $commit_message" > "$1"
+  elif echo "$commit_message" | grep -q "^infra"; then
+    echo "🏗️ $commit_message" > "$1"
+  elif echo "$commit_message" | grep -q "^music"; then
+    echo "🎼 $commit_message" > "$1"
+  elif echo "$commit_message" | grep -q "^tag"; then
+    echo "🔖 $commit_message" > "$1"
+  elif echo "$commit_message" | grep -q "^design"; then
+    echo "🎨 $commit_message" > "$1"
+  elif echo "$commit_message" | grep -q "^config"; then
+    echo "⚙️ $commit_message" > "$1"
+  elif echo "$commit_message" | grep -q "^docker"; then
+    echo "🐳 $commit_message" > "$1"
+  elif echo "$commit_message" | grep -q "^apple"; then
+    echo "🍎 $commit_message" > "$1"
+  elif echo "$commit_message" | grep -q "^android"; then
+    echo "📱 $commit_message" > "$1"
+  elif echo "$commit_message" | grep -q "^rollback"; then
+    echo "⏪ $commit_message" > "$1"
+  elif echo "$commit_message" | grep -q "^sync"; then
+    echo "🔄 $commit_message" > "$1"
+  elif echo "$commit_message" | grep -q "^optimization"; then
+    echo "📈 $commit_message" > "$1"
+  elif echo "$commit_message" | grep -q "^ref"; then
+    echo "📂 $commit_message" > "$1"
+  elif echo "$commit_message" | grep -q "^team"; then
+    echo "🧑‍💻 $commit_message" > "$1"
+  else
+    echo "🎉 $commit_message" > "$1"
+  fi
 fi
