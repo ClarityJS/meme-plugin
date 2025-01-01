@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
   push:
     branches:
-      - dev 
+      - dev
 
 permissions:
   contents: write
@@ -33,31 +33,29 @@ jobs:
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
 
-      - name: 拉取最新代码
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          git fetch origin dev
-          git checkout dev
-          git pull origin dev
-
-      - name: 运行 release-it
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: pnpm release --ci --config .release-it.json
-
-      - name: 提交更新
+      - name: 创建或切换分支
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           VERSION=$(pnpm pkg get version | tr -d '"')
           RELEASE_BRANCH="release/v$VERSION"
-          git checkout -b $RELEASE_BRANCH || git checkout $RELEASE_BRANCH
+          if git show-ref --verify --quiet refs/heads/$RELEASE_BRANCH; then
+            git checkout $RELEASE_BRANCH
+          else
+            git checkout -b $RELEASE_BRANCH
+          fi
+          git push origin $RELEASE_BRANCH --force || git push -u origin $RELEASE_BRANCH
+
+      - name: 更新提交
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          VERSION=$(pnpm pkg get version | tr -d '"')
+          RELEASE_BRANCH="release/v$VERSION"
           pnpm release -p angular -i CHANGELOG.md -s
-          git merge --no-edit dev
           git add CHANGELOG.md package.json
           git commit -m "chore: 发布版本 v$VERSION 🚀" || echo "无更改需要提交"
-          git push origin $RELEASE_BRANCH --force || git push -u origin $RELEASE_BRANCH --force
+          git push origin $RELEASE_BRANCH --force
 
       - name: 创建或更新 PR
         env:
