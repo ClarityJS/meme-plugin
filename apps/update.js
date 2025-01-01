@@ -71,7 +71,7 @@ export class update extends plugin {
     return up.updateLog()
   }
 
-  async updateRes (isTask = false, e = this.e) {
+  async updateRes (e, isTask = false) {
     if (!isTask && !e.isMaster) {
       await e.reply('只有主人才能更新表情包数据')
       return
@@ -112,7 +112,7 @@ export class update extends plugin {
     }
   }
 
-  async checkUpdate (isTask = false) {
+  async checkUpdate (e, isTask = false) {
     try {
       const { owner, repo, currentBranch } = await Code.gitRepo.getRepo()
       const result = await Code.check.version(Version.Plugin_Path, owner, repo, currentBranch)

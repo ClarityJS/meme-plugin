@@ -1,5 +1,5 @@
 import { Config, Render } from '../components/index.js'
-import { Meme } from '../models/index.js'
+import { Tools } from '../models/index.js'
 
 export class list extends plugin {
   constructor () {
@@ -19,7 +19,7 @@ export class list extends plugin {
   async list (e) {
     if (!Config.meme.Enable) return false
     try {
-      const infoMap = Meme.infoMap || {}
+      const infoMap = Tools.getInfoMap() || {}
       const keys = Object.keys(infoMap)
 
       if (!keys.length) {
@@ -49,9 +49,6 @@ export class list extends plugin {
         {
           emojiList,
           total
-        },
-        {
-          type: 'base64'
         }
       )
       await e.reply(img)

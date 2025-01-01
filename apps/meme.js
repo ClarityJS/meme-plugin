@@ -1,5 +1,5 @@
 import { Config } from '../components/index.js'
-import { Meme, Rule, Tools } from '../models/index.js'
+import { Rule, Tools } from '../models/index.js'
 
 export class meme extends plugin {
   constructor () {
@@ -22,7 +22,7 @@ export class meme extends plugin {
     this.rule = this.rule.filter((r) => r.fnc !== 'meme')
     const prefix = Config.meme.forceSharp ? '^#' : '^#?'
 
-    Object.entries(Tools.infoMap).forEach(([key, value]) => {
+    Object.entries(Tools.getInfoMap()).forEach(([key, value]) => {
       value.keywords.forEach((keyword) => {
         const escapedKeyword = keyword.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
         const regex = new RegExp(`${prefix}(${escapedKeyword})(.*)`, 'i')

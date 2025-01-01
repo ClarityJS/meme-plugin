@@ -1,5 +1,5 @@
 import { Config } from '../components/index.js'
-import { Meme } from '../models/index.js'
+import { Tools } from '../models/index.js'
 
 export class search extends plugin {
   constructor () {
@@ -15,7 +15,7 @@ export class search extends plugin {
   }
 
   async search (e) {
-    if(!Config.meme.Enable) return false
+    if (!Config.meme.Enable) return false
     try {
       const match = e.msg.match(this.rule[0].reg)
       const keyword = match[2].trim()
@@ -25,7 +25,7 @@ export class search extends plugin {
         return true
       }
 
-      const { infoMap } = Meme
+      const infoMap = Tools.getInfoMap()
       if (!infoMap) {
         await e.reply('表情数据未加载，请稍后重试', true)
         return true

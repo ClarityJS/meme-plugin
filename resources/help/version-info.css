@@ -9,12 +9,11 @@ body {
   color: #1e1f20;
   transform: scale(1.3);
   transform-origin: 0 0;
-  width: 600px;
 }
 .container {
-  background: url("../common/bg/bg-anemo.jpg") top left repeat;
+  background: url("./theme/main-02.png") top left repeat;
   background-size: cover;
-  width: 600px;
+  width: 800px;
   padding: 10px 0 10px 0;
 }
 .log-cont {
@@ -81,5 +80,11 @@ body {
 }
 .dev-cont .strong {
   font-size: 15px;
+}
+
+.log-cont .link {
+  color: #24d5cd; /* 高亮颜色 */
+  font-weight: bold; /* 加粗 */
+  text-decoration: underline; /* 下划线 */
 }
 /*# sourceMappingURL=version-info.css.map */
