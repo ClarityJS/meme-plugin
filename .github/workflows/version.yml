@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
   push:
     branches:
-      - dev
+      - dev 
 
 permissions:
   contents: write
@@ -19,6 +19,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
+          tags: true
 
       - name: 设置 pnpm
         uses: pnpm/action-setup@v4
@@ -33,29 +34,21 @@ jobs:
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
 
-      - name: 创建或切换分支
+      - name: 运行 release-it
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          VERSION=$(pnpm pkg get version | tr -d '"')
-          RELEASE_BRANCH="release/v$VERSION"
-          if git show-ref --verify --quiet refs/heads/$RELEASE_BRANCH; then
-            git checkout $RELEASE_BRANCH
-          else
-            git checkout -b $RELEASE_BRANCH
-          fi
-          git push origin $RELEASE_BRANCH --force || git push -u origin $RELEASE_BRANCH
+        run: pnpm release --ci --config .release-it.json
 
-      - name: 更新提交
+      - name: 提交更新
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           VERSION=$(pnpm pkg get version | tr -d '"')
           RELEASE_BRANCH="release/v$VERSION"
-          pnpm release -p angular -i CHANGELOG.md -s
+          git checkout -b $RELEASE_BRANCH || git checkout $RELEASE_BRANCH
           git add CHANGELOG.md package.json
           git commit -m "chore: 发布版本 v$VERSION 🚀" || echo "无更改需要提交"
-          git push origin $RELEASE_BRANCH --force
+          git push origin $RELEASE_BRANCH --force || git push -u origin $RELEASE_BRANCH --force
 
       - name: 创建或更新 PR
         env:
@@ -63,8 +56,8 @@ jobs:
         run: |
           VERSION=$(pnpm pkg get version | tr -d '"')
           RELEASE_BRANCH="release/v$VERSION"
-          CHANGELOG=$(awk -v version="v$VERSION" 'BEGIN {flag=0}
-            /^## / {if ($2 == version) flag=1; else if (flag) exit}
+          CHANGELOG=$(awk 'BEGIN {flag=0}
+            /^## / {if (flag) exit; flag=1}
             flag {print}' CHANGELOG.md)
           BODY=$(printf "### 更新日志\n\n%s\n" "$CHANGELOG")
           EXISTING_PR=$(gh pr list --head "$RELEASE_BRANCH" --base main --json number --jq '.[0].number')
