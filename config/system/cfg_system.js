@@ -153,13 +153,13 @@ export const cfgSchema = {
   stats: {
     title: '统计设置',
     cfg: {
-      enable: {
+      Enable: {
         title: '表情统计',
         key: '表情统计',
         desc: '是否开启表情统计',
         def: true,
         type: 'boolean',
-        fileName: 'meme'
+        fileName: 'stats'
       }
     },
     other: {
