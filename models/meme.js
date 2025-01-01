@@ -89,9 +89,9 @@ const Meme = {
   },
 
   /**
- * 获取表情包预览图片地址
- * @param {string} memeKey
- */
+   * 获取表情包预览图片地址
+   * @param {string} memeKey
+   */
   async getPreviewUrl (memeKey) {
     if (!memeKey) {
       logger.error('表情键值不能为空')

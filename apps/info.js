@@ -1,5 +1,5 @@
 import { Config } from '../components/index.js'
-import { Meme, Utils, Args } from '../models/index.js'
+import { Meme, Utils, Args, Tools } from '../models/index.js'
 
 export class meme extends plugin {
   constructor () {
@@ -17,23 +17,17 @@ export class meme extends plugin {
   }
 
   async info (e) {
-    if(!Config.meme.Enable) return false
+    if (!Config.meme.Enable) return false
+
     const message = (e?.msg || '').trim()
     const match = message.match(this.rule[0].reg)
     if (!match) return
 
     const keyword = match[2]
+    const memeKey = Tools.getKey(keyword)
+    const memeDetails = memeKey ? Tools.getInfo(memeKey) : null
 
-    Meme.load()
-
-    const memeKey = Meme.getKey(keyword)
-    if (!memeKey) {
-      await e.reply('未找到相关表情包详情', true)
-      return true
-    }
-
-    const memeDetails = Tools.getInfo(memeKey)
-    if (!memeDetails) {
+    if (!memeKey || !memeDetails) {
       await e.reply('未找到相关表情包详情', true)
       return true
     }
@@ -53,15 +47,12 @@ export class meme extends plugin {
     }
 
     const aliases = memeDetails.keywords ? memeDetails.keywords.join(', ') : '无'
-
     const previewUrl = await Meme.getPreviewUrl(memeKey)
 
-    let base64Data = ''
     let previewImageBase64 = ''
-
     try {
       const imageBuffer = await Utils.getImageBuffer(previewUrl)
-      base64Data = await Utils.bufferToBase64(imageBuffer)
+      const base64Data = await Utils.bufferToBase64(imageBuffer)
       previewImageBase64 = `base64://${base64Data}`
     } catch (error) {
       previewImageBase64 = '预览图片加载失败'
@@ -81,7 +72,7 @@ export class meme extends plugin {
       replyMessage.push(`\n参数提示:\n${argsHint}`)
     }
 
-    if (base64Data) {
+    if (previewImageBase64.startsWith('base64://')) {
       replyMessage.push('\n预览图片:\n')
       replyMessage.push(segment.image(previewImageBase64))
     } else {
