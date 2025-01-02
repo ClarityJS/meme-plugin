@@ -1,5 +1,16 @@
 # 变更日志
 
+## [1.6.3](https://github.com/wuliya336/clarity-meme/compare/v1.6.1...v1.6.3) (2025-01-02)
+
+### ♻️ 重构
+
+* **config:** 更新 stats.yaml 配置键名 ([ee7f86f](https://github.com/wuliya336/clarity-meme/commit/ee7f86f33f0ee28d4206d0eab1a2186b81bb1849))
+* **models:** 重构模型层代码 ([3a93f2f](https://github.com/wuliya336/clarity-meme/commit/3a93f2f32c33a3b25f8fac0078a9e308d5b09526))
+
+### 🔄 持续集成
+
+* 优化版本发布流程 ([5bcad35](https://github.com/wuliya336/clarity-meme/commit/5bcad353ee0bcc0efb68c1bfa1975bb238272493))
+
 ## [1.6.2](https://github.com/wuliya336/clarity-meme/compare/v1.6.1...v1.6.2) (2025-01-02)
 
 ### ♻️ 重构
