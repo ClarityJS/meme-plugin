@@ -5,7 +5,7 @@
 ### ♻️ 重构
 
 * **resources:** 更新字体资源为在线链接 ([0da91d3](https://github.com/wuliya336/clarity-meme/commit/0da91d357a43c626bda4db1a2e194f9a8331428c))
-* **resources:** 更新字体资源为在线链接 ([b85bf18](https://github.com/wuliya336/clarity-meme/commit/b85bf1838127a24573b7643632b8ffa46e0dbfc8))
+* **resources:** 更新背景图资源 ([1d4fb6c](https://github.com/wuliya336/clarity-meme/commit/1d4fb6c49e83242a78a98af598c2c8aec20c1bc9))
 
 ## [1.7.1](https://github.com/wuliya336/clarity-meme/compare/v1.7.0...v1.7.1) (2025-01-06)
 
