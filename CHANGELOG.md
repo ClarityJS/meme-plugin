@@ -1,5 +1,11 @@
 # 变更日志
 
+## [1.7.4](https://github.com/wuliya336/clarity-meme/compare/v1.7.3...v1.7.4) (2025-01-10)
+
+### ♻️ 重构
+
+* 重构版本发布流程并优化相关功能 ([a0f4978](https://github.com/wuliya336/clarity-meme/commit/a0f4978529544495cd4e2a71f62b683603b126a2))
+
 ## [1.7.3](https://github.com/wuliya336/clarity-meme/compare/v1.7.2...v1.7.3) (2025-01-10)
 * **models:** 增加请求重试机制并增加超时配置 ([0da418a](https://github.com/wuliya336/clarity-meme/commit/0da418a1ddfb0c6838b969479f63191c7f225273))
 * 
