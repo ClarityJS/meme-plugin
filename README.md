@@ -59,7 +59,8 @@ pnpm install --filter=clarity-meme
 
 ## 使用帮助
 其他内容请查看[官方文档](https://docs.wuliya.cn)
-
+### 表情后端搭建教程
+<mark>请查看文档</mark>
 ## 更新计划
 
 - [x] 支持手动输入QQ获取头像
@@ -88,3 +89,4 @@ pnpm install --filter=clarity-meme
   / [Github](https://github.com/yoimiya-kokomi/Miao-Yunzai)
 - [Yunzai-V3](https://github.com/yoimiya-kokomi/Yunzai-Bot) ：Yunzai V3 - 喵喵维护版（使用 icqq）
 - [Yunzai-V3](https://gitee.com/Le-niao/Yunzai-Bot) ：Yunzai V3 - 乐神原版（使用 oicq）
+- [meme-generator](https://github.com/MeetWq/meme-generator): 表情包生成器，用于制作各种沙雕表情包***本插件的来源***
