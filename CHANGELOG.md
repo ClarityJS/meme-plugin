@@ -1,7 +1,8 @@
 # 变更日志
 
 ## [1.7.3](https://github.com/wuliya336/clarity-meme/compare/v1.7.2...v1.7.3) (2025-01-10)
-
+* **models:** 增加请求重试机制并增加超时配置 ([0da418a](https://github.com/wuliya336/clarity-meme/commit/0da418a1ddfb0c6838b969479f63191c7f225273))
+* 
 ## [1.7.2](https://github.com/wuliya336/clarity-meme/compare/v1.7.1...v1.7.2) (2025-01-09)
 
 ### ♻️ 重构
