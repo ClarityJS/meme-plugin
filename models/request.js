@@ -1,4 +1,4 @@
-import { Config } from '../components/index.js'
+import { Config, Version } from '../components/index.js'
 import axios from 'axios'
 import FormData from 'form-data'
 
@@ -16,7 +16,7 @@ const Request = {
           method: method.toUpperCase(),
           url,
           headers: {
-            'User-Agent': 'clarity-meme'
+            'User-Agent': Version.Plugin_Name
           },
           timeout: Config.meme.timeout * 1000,
           proxy: false
@@ -43,7 +43,7 @@ const Request = {
       } catch (error) {
         attempt++
         if (attempt >= retry) {
-          log.error(error.message)
+          logger.error(error.message)
           if (error.response) {
             throw {
               status: error.response.status,
