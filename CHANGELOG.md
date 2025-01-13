@@ -1,5 +1,15 @@
 # 变更日志
 
+## [1.7.10](https://github.com/wuliya336/clarity-meme/compare/v1.7.9...v1.7.10) (2025-01-13)
+
+### 🐛 修复
+
+* **models:** 优化头像获取逻辑 ([b186553](https://github.com/wuliya336/clarity-meme/commit/b186553c2f8e6d68c0eb5116b648e8bf03c1b8ff))
+
+### ♻️ 重构
+
+* **meme:** 调整防误触机制并优化代码结构 ([0b53f40](https://github.com/wuliya336/clarity-meme/commit/0b53f40f8788bafccebba70a38c59311c44859bd))
+
 ## [1.7.9](https://github.com/wuliya336/clarity-meme/compare/v1.7.8...v1.7.9) (2025-01-13)
 
 ### 🐛 修复
