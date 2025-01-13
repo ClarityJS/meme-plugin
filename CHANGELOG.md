@@ -1,5 +1,16 @@
 # 变更日志
 
+## [1.7.9](https://github.com/wuliya336/clarity-meme/compare/v1.7.8...v1.7.9) (2025-01-13)
+
+### 🐛 修复
+
+* **meme:** 针对仅图片类型添加特殊处理以防误触发 ([e06bee5](https://github.com/wuliya336/clarity-meme/commit/e06bee598c8546cee62c05d8ed71d24b5426e1b9))
+* **random:** 更新表情生成逻辑以使用新的Meme类 ([1c499e0](https://github.com/wuliya336/clarity-meme/commit/1c499e0e955a69290ef22c205b5b47a4abefc356))
+
+### ♻️ 重构
+
+* **meme:** 重构表情包生成逻辑 ([a6b95ac](https://github.com/wuliya336/clarity-meme/commit/a6b95ac0c058696d4721d59342953a27baf9c411))
+
 ## [1.7.8](https://github.com/wuliya336/clarity-meme/compare/v1.7.7...v1.7.8) (2025-01-12)
 
 ### 🐛 修复
