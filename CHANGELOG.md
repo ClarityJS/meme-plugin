@@ -1,5 +1,11 @@
 # 变更日志
 
+## [1.7.12](https://github.com/wuliya336/clarity-meme/compare/v1.7.11...v1.7.12) (2025-01-14)
+
+### ♻️ 重构
+
+* **models:** 重构表情包生成逻辑 ([a04a9e0](https://github.com/wuliya336/clarity-meme/commit/a04a9e0f53ebb743f6673165c051a9ff3a519cb3))
+
 ## [1.7.11](https://github.com/wuliya336/clarity-meme/compare/v1.7.10...v1.7.11) (2025-01-14)
 
 ### 🐛 修复
