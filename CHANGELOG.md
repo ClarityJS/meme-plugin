@@ -1,5 +1,16 @@
 # 变更日志
 
+## [1.7.11](https://github.com/wuliya336/clarity-meme/compare/v1.7.10...v1.7.11) (2025-01-14)
+
+### 🐛 修复
+
+* **workflow:** 跳过版本更新当更新pre-commit依赖时 ([d8c186b](https://github.com/wuliya336/clarity-meme/commit/d8c186b5973332a6a9b15e0e0aa3c55bdffbbf1e))
+
+### ♻️ 重构
+
+* **Meme:** 重构表情生成逻辑 ([88d7108](https://github.com/wuliya336/clarity-meme/commit/88d71084dfac3909b44ca46fc8040be65fc41180))
+* **models:** 优化用户头像获取流程 ([580f1f7](https://github.com/wuliya336/clarity-meme/commit/580f1f7caa7bcd43a9546e03ea5974190f78663f))
+
 ## [1.7.10](https://github.com/wuliya336/clarity-meme/compare/v1.7.9...v1.7.10) (2025-01-13)
 
 ### 🐛 修复
