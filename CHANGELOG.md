@@ -1,5 +1,7 @@
 # 变更日志
 
+## [1.7.11](https://github.com/wuliya336/clarity-meme/compare/v1.7.10...v1.7.11) (2025-01-14)
+
 ## [1.7.10](https://github.com/wuliya336/clarity-meme/compare/v1.7.9...v1.7.10) (2025-01-13)
 
 ### 🐛 修复
