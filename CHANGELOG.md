@@ -1,5 +1,28 @@
 # 变更日志
 
+## [1.8.0](https://github.com/wuliya336/clarity-meme/compare/v1.7.12...v1.8.0) (2025-01-15)
+
+### ✨ 新功能
+
+* **models:** 添加表情保护功能并优化图片处理逻辑 ([cfbb3a5](https://github.com/wuliya336/clarity-meme/commit/cfbb3a5796bd1a5bc8347c129b7d4370d7d26a87))
+
+### 📚 文档更新
+
+* 更新 README 中的任务列表 ([7a0256d](https://github.com/wuliya336/clarity-meme/commit/7a0256dfc0f3a4a043c0ec975aefa648de2f5a80))
+
+### 🔧 其他更新
+
+* **pre-commit:** 将自动更新计划从每日更改为每周 ([0ea0506](https://github.com/wuliya336/clarity-meme/commit/0ea050644ba838f4fb21cd3ede04e5035ea84ec5))
+
+### ♻️ 重构
+
+* **models:** 优化 tools.js 中的请求处理逻辑 ([cb05843](https://github.com/wuliya336/clarity-meme/commit/cb05843f29799841f340c84f1ed83c37ddc96367))
+
+### ⚡ 性能优化
+
+* **models:** 优化请求模块的重试机制和错误处理 ([1f78a7b](https://github.com/wuliya336/clarity-meme/commit/1f78a7bf1240d54ba0dd47dce705f0b24398aa3b))
+* 优化字体加载策略 ([367c3cc](https://github.com/wuliya336/clarity-meme/commit/367c3ccbc1dccb4e423c0c5084911a53094d8ea5))
+
 ## [1.7.12](https://github.com/wuliya336/clarity-meme/compare/v1.7.11...v1.7.12) (2025-01-14)
 
 ### ♻️ 重构
