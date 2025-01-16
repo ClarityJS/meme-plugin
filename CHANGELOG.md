@@ -1,5 +1,15 @@
 # 变更日志
 
+## [1.8.1](https://github.com/wuliya336/clarity-meme/compare/v1.8.0...v1.8.1) (2025-01-16)
+
+### 🔧 其他更新
+
+* 更新自动发布工作流，改用 release-it 进行版本发布 ([e2a5cd4](https://github.com/wuliya336/clarity-meme/commit/e2a5cd4d0d08aa61e9bb1482073e57d28855116f))
+
+### ♻️ 重构
+
+* **Meme:** 优化 images.js 中的图片处理逻辑 ([b238cda](https://github.com/wuliya336/clarity-meme/commit/b238cda3e03dfaa8fc63e72ab88cf28913415250))
+
 ## [1.8.0](https://github.com/wuliya336/clarity-meme/compare/v1.7.12...v1.8.0) (2025-01-15)
 
 ### ✨ 新功能
