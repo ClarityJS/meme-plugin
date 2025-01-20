@@ -1,5 +1,30 @@
 # 变更日志
 
+## [1.8.2](https://github.com/wuliya336/clarity-meme/compare/v1.8.1...v1.8.2) (2025-01-20)
+
+### 🐛 修复
+
+* **meme:** 修复防误触发逻辑 ([6f2df92](https://github.com/wuliya336/clarity-meme/commit/6f2df92a2e31f0e754ba77c30491e93f57c4cf28))
+* **meme:** 修正禁用表情处理逻辑 ([3102636](https://github.com/wuliya336/clarity-meme/commit/3102636e7d3b5a6e33e665cf813d21cc17f03861))
+* **models:** 优化错误处理逻辑 ([ff32b3c](https://github.com/wuliya336/clarity-meme/commit/ff32b3c803a8c7289d3a1d70cb0ea496c02625f1))
+* **random:** 修复随机表情匹配逻辑 ([7b7fb52](https://github.com/wuliya336/clarity-meme/commit/7b7fb52a5f9923bbdbaa28dc0c9e75a6dc1e1d1a))
+
+### ♻️ 重构
+
+* **meme:** 重构表情包功能代码 ([a1353a5](https://github.com/wuliya336/clarity-meme/commit/a1353a589373529686f20a79364f2b43315576a5))
+* **models:** 优化引用消息处理逻辑 ([e08354e](https://github.com/wuliya336/clarity-meme/commit/e08354e64a154b0e75d9233c5b82391db54c752f))
+* **models:** 优化用户头像处理逻辑 ([20b82ed](https://github.com/wuliya336/clarity-meme/commit/20b82ed157b65eae59f28fa6aa7a42b604b79cbe))
+* **models:** 调整渲染精度设置并添加自动更新开关 ([03b83da](https://github.com/wuliya336/clarity-meme/commit/03b83da74e148e6e9a9b5942a651cf292253c31c))
+* **models:** 重构 Utils 类中的图片处理方法 ([958fb9a](https://github.com/wuliya336/clarity-meme/commit/958fb9afb961f5cc47514c640e26dffac1a7e558))
+* **models:** 重构图片处理逻辑 ([3c4c39e](https://github.com/wuliya336/clarity-meme/commit/3c4c39ea75e5f09c1120595ed2bd548dde57f6ec))
+* **models:** 重构工具模块中的 isAbroad 方法 ([35af59d](https://github.com/wuliya336/clarity-meme/commit/35af59dda35aea966cc611eea9162ebb46308d83))
+
+### 🔄 持续集成
+
+* 优化 GitHub Actions 工作流配置 ([a809021](https://github.com/wuliya336/clarity-meme/commit/a8090210ccd465395bea013f91f0bfc7296b033e))
+* 优化工作流文件 ([d2c3b16](https://github.com/wuliya336/clarity-meme/commit/d2c3b16e34f6d3ffd0c6f4da4ae8d569b807cbca))
+* 更新版本发布工作流，调整提交信息格式 ([6972b3e](https://github.com/wuliya336/clarity-meme/commit/6972b3e78092c1f2506c8053438ad53ee83180a2))
+
 ## [1.8.1](https://github.com/wuliya336/clarity-meme/compare/v1.8.0...v1.8.1) (2025-01-16)
 
 ### 🔧 其他更新
