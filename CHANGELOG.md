@@ -1,5 +1,15 @@
 # 变更日志
 
+## [1.8.3](https://github.com/wuliya336/clarity-meme/compare/v1.8.2...v1.8.3) (2025-01-21)
+
+### 🐛 修复
+
+* **admin:** 修复设置配置 ([cbdd0d6](https://github.com/wuliya336/clarity-meme/commit/cbdd0d6de4875c1ed76fc75c0d42d846bc16c269))
+
+### 📚 文档更新
+
+* **README:** 添加 emoji 合成到待办事项 ([37ce20e](https://github.com/wuliya336/clarity-meme/commit/37ce20e40da6f7905278c478aeed896731738319))
+
 ## [1.8.2](https://github.com/wuliya336/clarity-meme/compare/v1.8.1...v1.8.2) (2025-01-20)
 
 ### 🐛 修复
