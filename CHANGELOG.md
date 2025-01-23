@@ -1,5 +1,11 @@
 # 变更日志
 
+## [1.8.5](https://github.com/ClarityJS/meme-plugin/compare/v1.8.4...v1.8.5) (2025-01-23)
+
+### 🐛 修复
+
+* **workflows:** 修复release发布 ([a3d5684](https://github.com/ClarityJS/meme-plugin/commit/a3d568493b58c8ab5596d814e5c0b54488fd5ad4))
+
 ## [1.8.4](https://github.com/ClarityJS/meme-plugin/compare/v1.8.2...v1.8.4) (2025-01-23)
 
 ### 🐛 修复
