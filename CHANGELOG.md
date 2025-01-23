@@ -1,5 +1,22 @@
 # 变更日志
 
+## [1.8.3](https://github.com/ClarityJS/meme-plugin/compare/v1.8.2...v1.8.3) (2025-01-23)
+
+### 🐛 修复
+
+* **admin:** 修复设置配置 ([cbdd0d6](https://github.com/ClarityJS/meme-plugin/commit/cbdd0d6de4875c1ed76fc75c0d42d846bc16c269))
+* **update:** 修复在`Miao-Yunzai`下的更新资源功能 ([847ad1b](https://github.com/ClarityJS/meme-plugin/commit/847ad1b73cd36212a8fbd8b2d61bce8621f3abf5))
+
+### 📚 文档更新
+
+* **README:** 更新文档内容和格式 ([3e72d35](https://github.com/ClarityJS/meme-plugin/commit/3e72d35c8e6be3225d2693fb456408024a89f764))
+* **README:** 添加 emoji 合成到待办事项 ([37ce20e](https://github.com/ClarityJS/meme-plugin/commit/37ce20e40da6f7905278c478aeed896731738319))
+
+### ♻️ 重构
+
+* **Meme:** 重构表情命令处理逻辑 ([757278b](https://github.com/ClarityJS/meme-plugin/commit/757278b794b3bd8e3b5e4efaf792a3b8463090a5))
+* **models:** 重构 Meme 模型的参数处理逻辑 ([536a69d](https://github.com/ClarityJS/meme-plugin/commit/536a69dbb82f2eb11fc7100f221baf58ef85d4b4))
+
 ## [1.8.2](https://github.com/wuliya336/clarity-meme/compare/v1.8.1...v1.8.2) (2025-01-20)
 
 ### 🐛 修复
