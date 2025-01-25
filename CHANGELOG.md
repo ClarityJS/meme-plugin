@@ -1,5 +1,41 @@
 # 变更日志
 
+## [1.8.6](https://github.com/ClarityJS/meme-plugin/compare/v1.8.5...v1.8.6) (2025-01-25)
+
+### 🐛 修复
+
+* **components:** 修正版权信息中的插件名称和版本显示 ([bcb0d31](https://github.com/ClarityJS/meme-plugin/commit/bcb0d312c12564d40c4fd04f204f73704d30d947))
+* **index:** 修正导入路径，将 Tools 更改为 Utils ([ab515df](https://github.com/ClarityJS/meme-plugin/commit/ab515dfad83e99f95a324da4cfb04a831eb90d6a))
+* **models:** 修正 Help 模块的导入路径大小写 ([4602666](https://github.com/ClarityJS/meme-plugin/commit/46026665c578b380472c969a22c992e96be6cd98))
+* **Utils:** 更新 JSON 文件路径以正确保存表情包数据 ([087fa9c](https://github.com/ClarityJS/meme-plugin/commit/087fa9cd46b5e5dfdd5143ffcbeb431b5de78068))
+* 将 Tools 模块更改为 Utils，修正相关导入路径 ([5a1f7bc](https://github.com/ClarityJS/meme-plugin/commit/5a1f7bc7029763bfb2882c7d3a4798fbd0093d65))
+
+### 🎨 代码风格
+
+* **components:** 移除 elem.html 布局文件并更新版本信息引用 ([52c2f70](https://github.com/ClarityJS/meme-plugin/commit/52c2f708e8d6cbd32a470233cc0d71301e9a5d81))
+* **fonts:** 添加字体并更新相关样式 ([1cb3df0](https://github.com/ClarityJS/meme-plugin/commit/1cb3df01f7009547b4cec9b65745ae0c6e3694c3))
+
+### 🔧 其他更新
+
+* **deps:** bump actions/stale from 5 to 9 ([#6](https://github.com/ClarityJS/meme-plugin/issues/6)) ([cb76514](https://github.com/ClarityJS/meme-plugin/commit/cb76514e61fc2388e26e4a8db6f6db6b0c5c7e47))
+
+### ♻️ 重构
+
+* **components:** 重构 Data 组件 ([970e98c](https://github.com/ClarityJS/meme-plugin/commit/970e98c267909aaa70f5d3e8132d669cac63c088))
+* **components:** 重构版本信息显示逻辑 ([03db200](https://github.com/ClarityJS/meme-plugin/commit/03db2006937ddeeb182d510ff56294523dffa4b4))
+* **help:** 重构帮助系统模块 ([46c51cc](https://github.com/ClarityJS/meme-plugin/commit/46c51ccc44ac5d645e71593be8ed33d94e527b0f))
+* **index:** 重构初始化流程并优化日志输出 ([dfc892d](https://github.com/ClarityJS/meme-plugin/commit/dfc892d1df69c91bea5cda6ad22be6028aa8e8e0))
+* **models:** 重构 Meme 模型的参数处理逻辑 ([855945b](https://github.com/ClarityJS/meme-plugin/commit/855945b219492867000f4dd7132864b615e6716b))
+* **models:** 重构 Utils 工具模块 ([69b7dcd](https://github.com/ClarityJS/meme-plugin/commit/69b7dcd094e9ca038c5eb569a5747380e9363180))
+
+### 🔄 持续集成
+
+* **dependabot:** 更新 node 版本至 20.x ([f18228e](https://github.com/ClarityJS/meme-plugin/commit/f18228ed194e840c77a8c71db6a016484cd2af36))
+* **dependabot:** 更新配置以管理 npm 和 GitHub Actions 依赖 ([709e92d](https://github.com/ClarityJS/meme-plugin/commit/709e92d72cb45ddc4179f668fcd4686aa0645399))
+* 优化 GitHub Actions 工作流 ([cd72680](https://github.com/ClarityJS/meme-plugin/commit/cd726808cc1f560f96c524ab62363c8e8df55af9))
+* 移除 Dependabot 配置文件 ([f9707eb](https://github.com/ClarityJS/meme-plugin/commit/f9707ebbb27d1753bfbabbf0c4b0c368e4882c00))
+* 移除版本关闭流程中的分支删除步骤 ([09a21ac](https://github.com/ClarityJS/meme-plugin/commit/09a21ac287625c101005d7289f6ee84d2ec51407))
+
 ## [1.8.5](https://github.com/ClarityJS/meme-plugin/compare/v1.8.4...v1.8.5) (2025-01-23)
 
 ### 🐛 修复
