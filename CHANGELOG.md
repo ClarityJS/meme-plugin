@@ -1,5 +1,17 @@
 # 变更日志
 
+## [1.8.7](https://github.com/ClarityJS/meme-plugin/compare/v1.8.6...v1.8.7) (2025-01-25)
+
+### 🐛 修复
+
+* **info:** 更新获取图片 Base64 方法的调用路径 ([6b692a2](https://github.com/ClarityJS/meme-plugin/commit/6b692a22eda866677b27eec8c8708882a4e40ecd))
+* **Utils:** 更新 isAbroad 方法以支持多个 URL 进行 IP 地区检测 ([317a58c](https://github.com/ClarityJS/meme-plugin/commit/317a58cd9a0fc8b494a4903d3c3de03293a96885))
+
+### 📚 文档更新
+
+* **README:** 更新 README 格式，添加居中显示和介绍部分 ([bc4f866](https://github.com/ClarityJS/meme-plugin/commit/bc4f866ba13a662bbef5e13177e01b0292c01c69))
+* **README:** 更新标题格式为居中显示 ([26e5c56](https://github.com/ClarityJS/meme-plugin/commit/26e5c56d93ef4c6b45829b6b476376e4ab78b077))
+
 ## [1.8.6](https://github.com/ClarityJS/meme-plugin/compare/v1.8.5...v1.8.6) (2025-01-25)
 
 ### 🐛 修复
