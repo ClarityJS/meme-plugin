@@ -1,6 +1,6 @@
 {
   "name": "meme-plugin",
-  "version": "1.8.7",
+  "version": "1.8.8",
   "author": "wuliya",
   "type": "module",
   "dependencies": {

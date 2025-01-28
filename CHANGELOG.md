@@ -1,5 +1,13 @@
 # 变更日志
 
+## [1.8.8](https://github.com/ClarityJS/meme-plugin/compare/v1.8.7...v1.8.8) (2025-01-28)
+
+### ♻️ 重构
+
+* **meme:** 重构表情包相关功能 ([3dfab98](https://github.com/ClarityJS/meme-plugin/commit/3dfab98d478e90faaf885a17a505e132a59fdc56))
+* **models:** 重构参数处理逻辑 ([7e1bd41](https://github.com/ClarityJS/meme-plugin/commit/7e1bd417e65187f3e1e48461281db52b3a8e6798))
+* 重命名项目并优化 README 文档 ([98293c8](https://github.com/ClarityJS/meme-plugin/commit/98293c898573604f63ad4659ff5efdd39fd9fff3))
+
 ## [1.8.7](https://github.com/ClarityJS/meme-plugin/compare/v1.8.6...v1.8.7) (2025-01-25)
 
 ### 🐛 修复
