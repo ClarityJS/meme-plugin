@@ -1,5 +1,27 @@
 # 变更日志
 
+## [1.8.9](https://github.com/ClarityJS/meme-plugin/compare/v1.8.8...v1.8.9) (2025-01-31)
+
+### 🐛 修复
+
+* **tools:** 添加加载状态检查以防止未加载数据访问 ([78260df](https://github.com/ClarityJS/meme-plugin/commit/78260dfee2a0a1dde5b4a54157e5bada42107c12))
+
+### 📚 文档更新
+
+* **README:** 添加快捷指令实现的待办事项 ([c433b68](https://github.com/ClarityJS/meme-plugin/commit/c433b68b264b0838bfc3ed925f6e476606754e3a))
+
+### ♻️ 重构
+
+* **admin:** 重构配置系统并优化设置命令 ([8c7eabb](https://github.com/ClarityJS/meme-plugin/commit/8c7eabb620519007246e69c71416aae8968c73fa))
+* **components:** 优化版本日志格式和样式 ([d65963f](https://github.com/ClarityJS/meme-plugin/commit/d65963f4cd8a43e0d4c646dbf1c269abc2ab2171))
+* **components:** 重构配置模块并优化请求处理 ([ae20fa4](https://github.com/ClarityJS/meme-plugin/commit/ae20fa4c5b1bdba3bbdfa261b5df7ca96c000973))
+* **meme:** 优化表情包生成逻辑和正则表达式处理 ([4741205](https://github.com/ClarityJS/meme-plugin/commit/4741205ab7a2ff5fd3077d686634f8fd9d9f0639))
+* **plugin:** 重构表情插件配置和信息结构 ([4f27ee3](https://github.com/ClarityJS/meme-plugin/commit/4f27ee35e1099ef1f671dc25cac71f5840e1f495))
+
+### ⚡ 性能优化
+
+* **models:** 优化表情包数据获取效率 ([b89c9ff](https://github.com/ClarityJS/meme-plugin/commit/b89c9ff57f940eea1b266b0637960db6ea7f7c36))
+
 ## [1.8.8](https://github.com/ClarityJS/meme-plugin/compare/v1.8.7...v1.8.8) (2025-01-28)
 
 ### ♻️ 重构
