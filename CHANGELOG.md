@@ -1,5 +1,13 @@
 # 变更日志
 
+## [1.8.10](https://github.com/ClarityJS/meme-plugin/compare/v1.8.9...v1.8.10) (2025-02-01)
+
+### ♻️ 重构
+
+* **models:** 优化 getBaseUrl 方法 ([ed3d2ce](https://github.com/ClarityJS/meme-plugin/commit/ed3d2ceb6d95dbea31c6a5413a406b6cd1cfb81f))
+* **models:** 重构表情包数据处理逻辑 ([d4f3b11](https://github.com/ClarityJS/meme-plugin/commit/d4f3b112b60dd78d12ae88ba1121ba7ece163dfb))
+* **utils:** 优化 getBaseUrl 方法的默认值处理 ([9ef001e](https://github.com/ClarityJS/meme-plugin/commit/9ef001edf93fea83275793d4ffeda7b3351e43b0))
+
 ## [1.8.9](https://github.com/ClarityJS/meme-plugin/compare/v1.8.8...v1.8.9) (2025-01-31)
 
 ### 🐛 修复
