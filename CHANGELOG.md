@@ -1,5 +1,11 @@
 # 变更日志
 
+## [1.9.0](https://github.com/ClarityJS/meme-plugin/compare/v1.8.10...v1.9.0) (2025-02-01)
+
+### ✨ 新功能
+
+* **Utils:** 优化头像获取功能 ([a90579e](https://github.com/ClarityJS/meme-plugin/commit/a90579e1f5d31c45b335b6457ab2cd54b9332eb9))
+
 ## [1.8.10](https://github.com/ClarityJS/meme-plugin/compare/v1.8.9...v1.8.10) (2025-02-01)
 
 ### ♻️ 重构
