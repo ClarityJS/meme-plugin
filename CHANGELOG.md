@@ -1,5 +1,11 @@
 # 变更日志
 
+## [1.9.1](https://github.com/ClarityJS/meme-plugin/compare/v1.9.0...v1.9.1) (2025-02-01)
+
+### 🐛 修复
+
+* **Meme:** 在获取用户头像时添加事件参数 ([4e29034](https://github.com/ClarityJS/meme-plugin/commit/4e29034425dc67602eb53c7a7b027031ff1f89f8))
+
 ## [1.9.0](https://github.com/ClarityJS/meme-plugin/compare/v1.8.10...v1.9.0) (2025-02-01)
 
 ### ✨ 新功能
