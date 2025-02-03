@@ -1,5 +1,23 @@
 # 变更日志
 
+## [1.10.0](https://github.com/ClarityJS/meme-plugin/compare/v1.9.0...v1.10.0) (2025-02-03)
+
+### ✨ 新功能
+
+* **meme:** 添加引用消息中图片的获取功能 ([e18d344](https://github.com/ClarityJS/meme-plugin/commit/e18d344e1f1fc3d0c8e45f3b40ae0134908ef512))
+
+### 🐛 修复
+
+* **Meme:** 在获取用户头像时添加事件参数 ([4e29034](https://github.com/ClarityJS/meme-plugin/commit/4e29034425dc67602eb53c7a7b027031ff1f89f8))
+
+### 🔧 其他更新
+
+* **cfg:** 添加引用图片配置功能 ([c153082](https://github.com/ClarityJS/meme-plugin/commit/c153082fc0134519bf84c62a5e1249f1061bc162))
+
+### ♻️ 重构
+
+* **Utils:** 调整 getAvatar 和 getNickname 方法参数顺序 ([b09d4bc](https://github.com/ClarityJS/meme-plugin/commit/b09d4bc63f4149a7231185cd6da75e9fc3519648))
+
 ## [1.9.0](https://github.com/ClarityJS/meme-plugin/compare/v1.8.10...v1.9.0) (2025-02-01)
 
 ### ✨ 新功能
