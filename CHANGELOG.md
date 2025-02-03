@@ -1,5 +1,11 @@
 # 变更日志
 
+## [1.10.1](https://github.com/ClarityJS/meme-plugin/compare/v1.10.0...v1.10.1) (2025-02-03)
+
+### 🐛 修复
+
+* **Utils:** 添加 Config 模块的引用 ([1d6d9e8](https://github.com/ClarityJS/meme-plugin/commit/1d6d9e87a610b83922dc5b3d8b56db256cb519c7))
+
 ## [1.10.0](https://github.com/ClarityJS/meme-plugin/compare/v1.9.0...v1.10.0) (2025-02-03)
 
 ### ✨ 新功能
