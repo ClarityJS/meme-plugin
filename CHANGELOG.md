@@ -1,5 +1,11 @@
 # 变更日志
 
+## [1.10.2](https://github.com/ClarityJS/meme-plugin/compare/v1.10.1...v1.10.2) (2025-02-06)
+
+### ♻️ 重构
+
+* **meme:** 优化防误触发处理逻辑 ([cdc3c36](https://github.com/ClarityJS/meme-plugin/commit/cdc3c36c8244a21fb5bc0f371f76b51824a2ca33))
+
 ## [1.10.1](https://github.com/ClarityJS/meme-plugin/compare/v1.10.0...v1.10.1) (2025-02-03)
 
 ### 🐛 修复
