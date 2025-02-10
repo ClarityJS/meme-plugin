@@ -1,6 +1,6 @@
 {
   "name": "meme-plugin",
-  "version": "1.10.2",
+  "version": "1.10.3",
   "author": "ClarityJS",
   "type": "module",
   "dependencies": {
