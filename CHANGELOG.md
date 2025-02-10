@@ -4,14 +4,12 @@
 
 ### 🐛 修复
 
-* **meme:** 修复引用图片功能 ([c641289](https://github.com/ClarityJS/meme-plugin/commit/c641289b890d13a01aec12f2aab95fb2844f04c6))
 * **models/Meme:** 优化错误信息处理逻辑 ([186608d](https://github.com/ClarityJS/meme-plugin/commit/186608d4c3154a0699a80bc43c0f05e2587e099e))
 * **models:** 修复引用消息源逻辑 ([a229f6f](https://github.com/ClarityJS/meme-plugin/commit/a229f6f699bed9c1ba3f4a480ca25fe025c11f7c))
 
 ### ♻️ 重构
 
 * **models:** 优化表情包数据加载和请求逻辑 ([0224643](https://github.com/ClarityJS/meme-plugin/commit/0224643d5487d809e20fa2d2e60412e2c5cb076e))
-* **models:** 重构 Utils/common.js 中的图片处理函数 ([26e588e](https://github.com/ClarityJS/meme-plugin/commit/26e588e1c043451d94990935e0041ee69848aa5a))
 * **models:** 重构表情包生成相关代码 ([402a21f](https://github.com/ClarityJS/meme-plugin/commit/402a21f814857d998cfb862f8a0bbf7240977728))
 
 ## [1.10.2](https://github.com/ClarityJS/meme-plugin/compare/v1.10.1...v1.10.2) (2025-02-06)
