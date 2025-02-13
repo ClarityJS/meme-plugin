@@ -1,5 +1,18 @@
 # 变更日志
 
+## [1.10.4](https://github.com/ClarityJS/meme-plugin/compare/v1.10.3...v1.10.4) (2025-02-13)
+
+### 🐛 修复
+
+* **utils/common:** 修复请求参数，确保正确获取图片数据 ([08ef12a](https://github.com/ClarityJS/meme-plugin/commit/08ef12a7571446c496e87774630e3c449744d457))
+
+### ♻️ 重构
+
+* **apps:** 优化更新流程并重构代码 ([faf3198](https://github.com/ClarityJS/meme-plugin/commit/faf31986a12213a16f819be08ed0cf9c5f28be55))
+* **Meme:** 重构表情包生成逻辑 ([7bae9ec](https://github.com/ClarityJS/meme-plugin/commit/7bae9ec039f6355a79a192002bdaa0e1550c4c25))
+* **models:** 重构 models 层代码 ([fe43bfd](https://github.com/ClarityJS/meme-plugin/commit/fe43bfd8e34dae3c0f2611925b59c9207a8f7aad))
+* **models:** 重构 Utils 工具类 ([d12cd92](https://github.com/ClarityJS/meme-plugin/commit/d12cd9237353ad5e7542bb03fe8deca20d789766))
+
 ## [1.10.3](https://github.com/ClarityJS/meme-plugin/compare/v1.10.2...v1.10.3) (2025-02-10)
 
 ### 🐛 修复
