@@ -156,155 +156,155 @@ const Tools = {
    * 获取所有表情包的信息
    * @returns {object|null} - 返回表情包信息映射表
    */
-//   getInfoMap () {
-//     if (!this.loaded) return
-//     return this.infoMap || null
-//   },
+  //   getInfoMap () {
+  //     if (!this.loaded) return
+  //     return this.infoMap || null
+  //   },
 
-//   /**
-//    * 获取指定表情包的信息
-//    * @param {string} memeKey - 表情包的唯一标识符
-//    * @returns {object|null} - 返回表情包的信息或 null
-//    */
-//   getInfo (memeKey) {
-//     if (!this.loaded) return
-//     return this.infoMap[memeKey] || null
-//   },
+  //   /**
+  //    * 获取指定表情包的信息
+  //    * @param {string} memeKey - 表情包的唯一标识符
+  //    * @returns {object|null} - 返回表情包的信息或 null
+  //    */
+  //   getInfo (memeKey) {
+  //     if (!this.loaded) return
+  //     return this.infoMap[memeKey] || null
+  //   },
 
-//   /**
-//    * 将关键字转换为表情包键
-//    * @param {string} keyword - 表情包关键字
-//    * @returns {string|null} - 返回对应的表情包键或 null
-//    */
-//   getKey (keyword) {
-//     if (!this.loaded) return
-//     for (const [key, value] of Object.entries(this.infoMap)) {
-//       if (value.keywords.includes(keyword)) {
-//         return key
-//       }
-//     }
-//     return null
-//   },
-//   /**
-//    * 获取指定表情包的关键字
-//    * @param {string} memeKey - 表情包的唯一标识符
-//    * @returns {Array<string>|null} - 返回表情包关键字数组或 null
-//    */
-//   getKeywords (memeKey) {
-//     if (!this.loaded) return
-//     const memeKeywords = this.infoMap[memeKey].keywords
-//     return memeKeywords
-//   },
+  //   /**
+  //    * 将关键字转换为表情包键
+  //    * @param {string} keyword - 表情包关键字
+  //    * @returns {string|null} - 返回对应的表情包键或 null
+  //    */
+  //   getKey (keyword) {
+  //     if (!this.loaded) return
+  //     for (const [key, value] of Object.entries(this.infoMap)) {
+  //       if (value.keywords.includes(keyword)) {
+  //         return key
+  //       }
+  //     }
+  //     return null
+  //   },
+  //   /**
+  //    * 获取指定表情包的关键字
+  //    * @param {string} memeKey - 表情包的唯一标识符
+  //    * @returns {Array<string>|null} - 返回表情包关键字数组或 null
+  //    */
+  //   getKeywords (memeKey) {
+  //     if (!this.loaded) return
+  //     const memeKeywords = this.infoMap[memeKey].keywords
+  //     return memeKeywords
+  //   },
 
-//   /**
-//    * 获取所有的关键词
-//    * @returns {Array<string>} - 返回包含所有关键词的数组
-//    */
-//   getAllKeywords () {
-//     if (!this.loaded) return
-//     const keywords = Object.values(this.infoMap)
-//       .flatMap(info => info.keywords || [])
-//     return Array.from(new Set(keywords))
-//   },
+  //   /**
+  //    * 获取所有的关键词
+  //    * @returns {Array<string>} - 返回包含所有关键词的数组
+  //    */
+  //   getAllKeywords () {
+  //     if (!this.loaded) return
+  //     const keywords = Object.values(this.infoMap)
+  //       .flatMap(info => info.keywords || [])
+  //     return Array.from(new Set(keywords))
+  //   },
 
-//   /**
-//      * 获取所有的 key
-//      * @returns {Array<string>} - 返回所有的表情包 key 的数组
-//      */
-//   getAllKeys () {
-//     if (!this.loaded) return
-//     return Object.keys(this.infoMap)
-//   },
+  //   /**
+  //      * 获取所有的 key
+  //      * @returns {Array<string>} - 返回所有的表情包 key 的数组
+  //      */
+  //   getAllKeys () {
+  //     if (!this.loaded) return
+  //     return Object.keys(this.infoMap)
+  //   },
 
-//   /**
-//    * 获取表情包的参数类型
-//    * @param {string} memeKey - 表情包的唯一标识符
-//    * @returns {object|null} - 返回参数类型信息或 null
-//    */
-//   getParams (memeKey) {
-//     if (!this.loaded) return
-//     const memeInfo = this.getInfo(memeKey)
-//     const { min_texts, max_texts, min_images, max_images, default_texts, args_type } = memeInfo.params_type
-//     return {
-//       min_texts,
-//       max_texts,
-//       min_images,
-//       max_images,
-//       default_texts,
-//       args_type
-//     }
-//   },
-//   /**
-//  * 获取指定表情包参数的类型
-//  * @param {string} key - 表情包的唯一标识符
-//  * @param {string} paramName - 参数名称
-//  * @returns {string|null} - 返回参数的类型或 null
-//  */
-//   getParamType (key, paramName) {
-//     if (!this.loaded) return
-//     const params = this.getParams(key)
-//     const argsModel = params.args_type.args_model
-//     const properties = argsModel.properties
+  //   /**
+  //    * 获取表情包的参数类型
+  //    * @param {string} memeKey - 表情包的唯一标识符
+  //    * @returns {object|null} - 返回参数类型信息或 null
+  //    */
+  //   getParams (memeKey) {
+  //     if (!this.loaded) return
+  //     const memeInfo = this.getInfo(memeKey)
+  //     const { min_texts, max_texts, min_images, max_images, default_texts, args_type } = memeInfo.params_type
+  //     return {
+  //       min_texts,
+  //       max_texts,
+  //       min_images,
+  //       max_images,
+  //       default_texts,
+  //       args_type
+  //     }
+  //   },
+  //   /**
+  //  * 获取指定表情包参数的类型
+  //  * @param {string} key - 表情包的唯一标识符
+  //  * @param {string} paramName - 参数名称
+  //  * @returns {string|null} - 返回参数的类型或 null
+  //  */
+  //   getParamType (key, paramName) {
+  //     if (!this.loaded) return
+  //     const params = this.getParams(key)
+  //     const argsModel = params.args_type.args_model
+  //     const properties = argsModel.properties
 
-//     if (properties[paramName]) {
-//       const paramInfo = properties[paramName]
-//       if (paramName === 'user_infos') {
-//         return null
-//       }
+  //     if (properties[paramName]) {
+  //       const paramInfo = properties[paramName]
+  //       if (paramName === 'user_infos') {
+  //         return null
+  //       }
 
-//       if (paramInfo.type) {
-//         return paramInfo.type
-//       }
-//     }
+  //       if (paramInfo.type) {
+  //         return paramInfo.type
+  //       }
+  //     }
 
-//     return null
-//   },
+  //     return null
+  //   },
 
-//   /**
-//    * 获取指定 key 的描述信息
-//    * @param {string} key - 需要获取描述的 key。
-//    * @returns {string} - 返回描述信息，格式为 "[参数描述1][参数描述2]..."。
-//    */
-//   descriptions (key) {
-//     if (!this.loaded) return
-//     const { args_type } = this.getParams(key)
-//     if (args_type == null) {
-//       return ''
-//     }
-//     const properties = args_type.args_model.properties || {}
+  //   /**
+  //    * 获取指定 key 的描述信息
+  //    * @param {string} key - 需要获取描述的 key。
+  //    * @returns {string} - 返回描述信息，格式为 "[参数描述1][参数描述2]..."。
+  //    */
+  //   descriptions (key) {
+  //     if (!this.loaded) return
+  //     const { args_type } = this.getParams(key)
+  //     if (args_type == null) {
+  //       return ''
+  //     }
+  //     const properties = args_type.args_model.properties || {}
 
-//     const descriptions = Object.entries(properties)
-//       .filter(([paramName]) => paramName !== 'user_infos')
-//       .map(([paramName, paramInfo]) => {
-//         const description = paramInfo.description || paramInfo.title || ''
-//         if (description) {
-//           return `[${paramName}: ${description}]`
-//         }
-//         return null
-//       })
-//       .filter((text) => text !== null)
+  //     const descriptions = Object.entries(properties)
+  //       .filter(([paramName]) => paramName !== 'user_infos')
+  //       .map(([paramName, paramInfo]) => {
+  //         const description = paramInfo.description || paramInfo.title || ''
+  //         if (description) {
+  //           return `[${paramName}: ${description}]`
+  //         }
+  //         return null
+  //       })
+  //       .filter((text) => text !== null)
 
-//     return descriptions.join('')
-//   },
-//   /**
-//    * 获取对应表情的表情
-//    * @param {string} key
-//    * @returns 返回对应表情, 格式为[标签1][标签2]
-//    */
-//   getTags (key) {
-//     if (!this.loaded) return
-//     const info = this.getInfo(key)
-//     return info.tags.map(tag => `[${tag}]`).join('')
-//   },
+  //     return descriptions.join('')
+  //   },
+  //   /**
+  //    * 获取对应表情的表情
+  //    * @param {string} key
+  //    * @returns 返回对应表情, 格式为[标签1][标签2]
+  //    */
+  //   getTags (key) {
+  //     if (!this.loaded) return
+  //     const info = this.getInfo(key)
+  //     return info.tags.map(tag => `[${tag}]`).join('')
+  //   },
 
-//   /**
-//    * 获取对应表情的默认文本
-//    */
-//   getDeftext (key) {
-//     if (!this.loaded) return
-//     const info = this.getInfo(key)
-//     return info.params_type.default_texts
-//   },
+  //   /**
+  //    * 获取对应表情的默认文本
+  //    */
+  //   getDeftext (key) {
+  //     if (!this.loaded) return
+  //     const info = this.getInfo(key)
+  //     return info.params_type.default_texts
+  //   },
 
   /**
    * 检查输入是否在禁用表情包列表中
