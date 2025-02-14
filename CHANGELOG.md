@@ -1,5 +1,11 @@
 # 变更日志
 
+## [1.11.1](https://github.com/ClarityJS/meme-plugin/compare/v1.11.0...v1.11.1) (2025-02-14)
+
+### 🐛 修复
+
+* **guoba:** 配置信息 ([83e755c](https://github.com/ClarityJS/meme-plugin/commit/83e755c16d5680f9f26e2e9d47d61131212bd02a))
+
 ## [1.11.0](https://github.com/ClarityJS/meme-plugin/compare/v1.10.4...v1.11.0) (2025-02-14)
 
 ### ✨ 新功能
