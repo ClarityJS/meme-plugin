@@ -12,7 +12,6 @@
 
 * **info:** 修复标签列表为空时的处理逻辑 ([cd072c7](https://github.com/ClarityJS/meme-plugin/commit/cd072c702caea9c7cc2f4b52b1b322100a97473e))
 * **meme:** 修复获取默认文本的异步处理逻辑 ([04602a9](https://github.com/ClarityJS/meme-plugin/commit/04602a93dc774159f78f7e100753b6d36cec5bea))
-* **meme:** 修复表情包相关函数返回值和参数处理 ([cfa47fb](https://github.com/ClarityJS/meme-plugin/commit/cfa47fb70fe9b4b7466801d41b9d0749e442cc05))
 * **meme:** 表情包资源更新逻辑 ([0685ccd](https://github.com/ClarityJS/meme-plugin/commit/0685ccd66c9d713a130f95393b32ff27e8b1e204))
 
 ### 📚 文档更新
@@ -22,12 +21,8 @@
 ### ♻️ 重构
 
 * **expression:** 重构表情相关功能 ([d80f17f](https://github.com/ClarityJS/meme-plugin/commit/d80f17f57bb0e78acdab95b276ba69d15c8c7ce1))
-* **help:** 重构帮助插件 ([7a7cd82](https://github.com/ClarityJS/meme-plugin/commit/7a7cd82314dc9a29d6aec8c845eb788cf3150227))
 * **help:** 重构帮助插件并适配新版样式 ([693917f](https://github.com/ClarityJS/meme-plugin/commit/693917f4c38205a663a1882e09c9ff3fe48eee67))
 * **models:** 优化图像获取逻辑和条件判断 ([c55414c](https://github.com/ClarityJS/meme-plugin/commit/c55414c4404a188a33edc600924626d3af91ee93))
-* **models:** 优化头像下载功能并移除默认头像 ([584a7d0](https://github.com/ClarityJS/meme-plugin/commit/584a7d0b478d13e5090c0e23c7a70cb644f40c75))
-* **update:** 优化代码结构和功能 ([5e4d3db](https://github.com/ClarityJS/meme-plugin/commit/5e4d3dbefb41ac9c2b1406518ad147bb79dec7ea))
-* **update:** 重构更新检查功能 ([1dde7b2](https://github.com/ClarityJS/meme-plugin/commit/1dde7b239fcc3c03ced8093ea25330a249bec643))
 * **update:** 重构自动更新功能并优化配置 ([89dc997](https://github.com/ClarityJS/meme-plugin/commit/89dc9979b21c42d6ee93a734d50329ec1b40f92c))
 
 ## [1.10.4](https://github.com/ClarityJS/meme-plugin/compare/v1.10.3...v1.10.4) (2025-02-13)
