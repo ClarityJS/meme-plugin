@@ -1,5 +1,11 @@
 # 变更日志
 
+## [1.11.2](https://github.com/ClarityJS/meme-plugin/compare/v1.11.1...v1.11.2) (2025-02-14)
+
+### ♻️ 重构
+
+* **models:** 优化 meme 模型中的统计功能 ([4217184](https://github.com/ClarityJS/meme-plugin/commit/42171842a4d2bc779771418ab6d0be80dcf43636))
+
 ## [1.11.1](https://github.com/ClarityJS/meme-plugin/compare/v1.11.0...v1.11.1) (2025-02-14)
 
 ### 🐛 修复
