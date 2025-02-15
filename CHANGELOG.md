@@ -1,5 +1,11 @@
 # 变更日志
 
+## [1.13.0](https://github.com/ClarityJS/meme-plugin/compare/v1.12.0...v1.13.0) (2025-02-15)
+
+### ✨ 新功能
+
+* **models:** 优化表情包数据更新逻辑 ([98fcce1](https://github.com/ClarityJS/meme-plugin/commit/98fcce18d2c65b3a8e006207221709a87d5d1196))
+
 ## [1.12.0](https://github.com/ClarityJS/meme-plugin/compare/v1.11.1...v1.12.0) (2025-02-15)
 
 ### ✨ 新功能
