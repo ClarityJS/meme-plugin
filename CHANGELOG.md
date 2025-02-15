@@ -1,5 +1,21 @@
 # 变更日志
 
+## [1.12.0](https://github.com/ClarityJS/meme-plugin/compare/v1.11.1...v1.12.0) (2025-02-15)
+
+### ✨ 新功能
+
+* **update:** 增加强制更新功能并优化数据更新逻辑 ([46bd9b3](https://github.com/ClarityJS/meme-plugin/commit/46bd9b3dc5e9dca4750b7cfcd6754a59c4de4de7))
+
+### 🐛 修复
+
+* **Utils:** 修复昵称获取逻辑并优化性别获取方法 ([260c90d](https://github.com/ClarityJS/meme-plugin/commit/260c90d2210cbdcc589425013f195e98eec058e5))
+
+### ♻️ 重构
+
+* **models:** 优化 meme 模型中的统计功能 ([4217184](https://github.com/ClarityJS/meme-plugin/commit/42171842a4d2bc779771418ab6d0be80dcf43636))
+* **models:** 修改帮助列表中清语表情更新命令的描述 ([72ff370](https://github.com/ClarityJS/meme-plugin/commit/72ff370dfced152222731a315c66e3e2e66a4ce4))
+* **models:** 重构 Utils/common.js 文件 ([ad0d594](https://github.com/ClarityJS/meme-plugin/commit/ad0d59487c274eb4e53045788515826157592d37))
+
 ## [1.11.2](https://github.com/ClarityJS/meme-plugin/compare/v1.11.1...v1.11.2) (2025-02-14)
 
 ### ♻️ 重构
