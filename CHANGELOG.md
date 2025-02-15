@@ -1,5 +1,16 @@
 # 变更日志
 
+## [1.11.3](https://github.com/ClarityJS/meme-plugin/compare/v1.11.1...v1.11.3) (2025-02-15)
+
+### 🐛 修复
+
+* **Utils:** 修复昵称获取逻辑并优化性别获取方法 ([260c90d](https://github.com/ClarityJS/meme-plugin/commit/260c90d2210cbdcc589425013f195e98eec058e5))
+
+### ♻️ 重构
+
+* **models:** 优化 meme 模型中的统计功能 ([4217184](https://github.com/ClarityJS/meme-plugin/commit/42171842a4d2bc779771418ab6d0be80dcf43636))
+* **models:** 重构 Utils/common.js 文件 ([ad0d594](https://github.com/ClarityJS/meme-plugin/commit/ad0d59487c274eb4e53045788515826157592d37))
+
 ## [1.11.2](https://github.com/ClarityJS/meme-plugin/compare/v1.11.1...v1.11.2) (2025-02-14)
 
 ### ♻️ 重构
