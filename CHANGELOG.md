@@ -1,5 +1,25 @@
 # 变更日志
 
+## [1.13.1](https://github.com/ClarityJS/meme-plugin/compare/v1.13.0...v1.13.1) (2025-02-17)
+
+### 🐛 修复
+
+* **config:** 修正仓库更新检查推送时间配置 ([1bb4a87](https://github.com/ClarityJS/meme-plugin/commit/1bb4a870df6ab6f47e8ce97ee42650e57f7a13b2))
+* **models:** 修复 FormData 与 axios 互操作性问题 ([50f7ffc](https://github.com/ClarityJS/meme-plugin/commit/50f7ffcbb86d398dae06e9fa6541ce3bc1a76c69))
+
+### 📚 文档更新
+
+* 更新 README.md 中的徽标和数据统计信息 ([7c73c38](https://github.com/ClarityJS/meme-plugin/commit/7c73c38e1192e5081995dbca4309f6954fd4cf83))
+
+### ♻️ 重构
+
+* **config:** 重构配置模块并优化功能 ([539c4a9](https://github.com/ClarityJS/meme-plugin/commit/539c4a9fc4496fc80416079c867297276568651b))
+* 将图片资源从 PNG/JPEG 格式转换为 WebP 格式 ([4988b86](https://github.com/ClarityJS/meme-plugin/commit/4988b86fa5e74847ab41869d0d778125445ba7d7))
+
+### 🏗️ 构建系统
+
+* **package:** 添加依赖 ([03ea368](https://github.com/ClarityJS/meme-plugin/commit/03ea368a5872eb8bd399c2babad445256295eeb7))
+
 ## [1.13.0](https://github.com/ClarityJS/meme-plugin/compare/v1.12.0...v1.13.0) (2025-02-15)
 
 ### ✨ 新功能
