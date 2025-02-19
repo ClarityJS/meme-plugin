@@ -1,5 +1,38 @@
 # 变更日志
 
+## [1.14.0](https://github.com/ClarityJS/meme-plugin/compare/v1.13.0...v1.14.0) (2025-02-19)
+
+### ✨ 新功能
+
+* **other:** 添加劫持土块表情包功能 ([fb4f12d](https://github.com/ClarityJS/meme-plugin/commit/fb4f12d6da428b707cadbb0d8bb04985f9e971ee))
+
+### 🐛 修复
+
+* **config:** 修正仓库更新检查推送时间配置 ([1bb4a87](https://github.com/ClarityJS/meme-plugin/commit/1bb4a870df6ab6f47e8ce97ee42650e57f7a13b2))
+* **models:** 修复 FormData 与 axios 互操作性问题 ([50f7ffc](https://github.com/ClarityJS/meme-plugin/commit/50f7ffcbb86d398dae06e9fa6541ce3bc1a76c69))
+* **models:** 修复数据库路径和异步文件检查 ([c05dd62](https://github.com/ClarityJS/meme-plugin/commit/c05dd62eb75963df0997f3c3afad189baa1b2c17))
+* **models:** 修复表情包关键词获取逻辑 ([ba48ae6](https://github.com/ClarityJS/meme-plugin/commit/ba48ae61bde93f0e45e52fa50c08aaf8ed32290c))
+
+### 🎨 代码风格
+
+* 优化代码格式和导入顺序 ([fe9e4ed](https://github.com/ClarityJS/meme-plugin/commit/fe9e4ed87d8f4b2ed452559362c74f751877fedc))
+
+### 📚 文档更新
+
+* 更新 README.md 中的徽标和数据统计信息 ([7c73c38](https://github.com/ClarityJS/meme-plugin/commit/7c73c38e1192e5081995dbca4309f6954fd4cf83))
+
+### ♻️ 重构
+
+* **components:** 重构组件类并优化导入导出 ([d6bde33](https://github.com/ClarityJS/meme-plugin/commit/d6bde33e6ac50d13fb03e24c0a9f9625f09f8a21))
+* **config:** 重构配置模块并优化功能 ([539c4a9](https://github.com/ClarityJS/meme-plugin/commit/539c4a9fc4496fc80416079c867297276568651b))
+* **hijack:** 优化土块插件表情包劫持逻辑 ([e4d9ac1](https://github.com/ClarityJS/meme-plugin/commit/e4d9ac1d5c6af2274b3dc3adece84439f782f270))
+* **models:** 重构表情包数据生成逻辑 ([5bf14f0](https://github.com/ClarityJS/meme-plugin/commit/5bf14f0783ec7d31a49cab879dd96e42dab50c7d))
+* 将图片资源从 PNG/JPEG 格式转换为 WebP 格式 ([4988b86](https://github.com/ClarityJS/meme-plugin/commit/4988b86fa5e74847ab41869d0d778125445ba7d7))
+
+### 🏗️ 构建系统
+
+* **package:** 添加依赖 ([03ea368](https://github.com/ClarityJS/meme-plugin/commit/03ea368a5872eb8bd399c2babad445256295eeb7))
+
 ## [1.13.0](https://github.com/ClarityJS/meme-plugin/compare/v1.12.0...v1.13.0) (2025-02-15)
 
 ### ✨ 新功能
