@@ -1,5 +1,11 @@
 # 变更日志
 
+## [1.14.2](https://github.com/ClarityJS/meme-plugin/compare/v1.14.1...v1.14.2) (2025-02-26)
+
+### 🐛 修复
+
+* 移除表情保护功能相关配置和文档 ([e2e7536](https://github.com/ClarityJS/meme-plugin/commit/e2e75363af6517f187d5be154a1492ad42f3ebf3))
+
 ## [1.14.1](https://github.com/ClarityJS/meme-plugin/compare/v1.14.0...v1.14.1) (2025-02-26)
 
 ### 🐛 修复
