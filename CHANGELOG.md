@@ -1,5 +1,33 @@
 # 变更日志
 
+## [1.14.1](https://github.com/ClarityJS/meme-plugin/compare/v1.14.0...v1.14.1) (2025-02-26)
+
+### 🐛 修复
+
+* 优化发布流程 ([a356caa](https://github.com/ClarityJS/meme-plugin/commit/a356caad62079aee78741a539794cbed4b27d011))
+* 修复参数解析逻辑以支持布尔值处理 ([9d33c8f](https://github.com/ClarityJS/meme-plugin/commit/9d33c8f598754ff60a8dcd1334b94054574efbf4))
+* 修复文本处理逻辑以使用默认文本数组 ([a3f5b00](https://github.com/ClarityJS/meme-plugin/commit/a3f5b00f7139e8be6a00d7752da52df004573347))
+* 更新文档和正则表达式中的插件名称为meme-plugin ([62c01a4](https://github.com/ClarityJS/meme-plugin/commit/62c01a49585387055450f834543382c874feaabf))
+* 更新正则表达式以支持meme-plugin插件名称 ([c452236](https://github.com/ClarityJS/meme-plugin/commit/c4522363923823f0a712e9f35b73e8d87bed3565))
+* 更新用户文本处理逻辑以支持多个 [#tag](https://github.com/ClarityJS/meme-plugin/issues/tag) value 结构 ([71c23cb](https://github.com/ClarityJS/meme-plugin/commit/71c23cb8a750e6c98da6426020067afc799cf95e))
+* 移除 README 中的未完成任务项 `快捷指令` 实现 ([78da94c](https://github.com/ClarityJS/meme-plugin/commit/78da94c0f7938339af33d2c52f34e3aef70cbfce))
+* 移除多余的日志信息 ([c196a06](https://github.com/ClarityJS/meme-plugin/commit/c196a0654665128fb045e9765ada606da6449ed4))
+
+### 🎨 代码风格
+
+* **common:** 更新标题字体样式 ([da7d3ca](https://github.com/ClarityJS/meme-plugin/commit/da7d3ca72429a849bb71b554cab4e100f2fb8236))
+* 优化代码格式和可读性 ([28a827c](https://github.com/ClarityJS/meme-plugin/commit/28a827c29a1e7d2c445f24d3329f22503e82fee8))
+
+### ♻️ 重构
+
+* **hijack:** 优化劫持逻辑并改进错误处理 ([3385666](https://github.com/ClarityJS/meme-plugin/commit/3385666476fb1fa4a7099a6ddcee5f67bc908729))
+* **models:** 重构表情制作流程并优化错误处理 ([2cd9139](https://github.com/ClarityJS/meme-plugin/commit/2cd9139ab53f7229f1e81b3a1dd332b982e3e871))
+* **utils:** 修改引用图片获取逻辑 ([eae4942](https://github.com/ClarityJS/meme-plugin/commit/eae4942c22773f4272b1f475dd67a8ac3d7e133d))
+
+### ⚡ 性能优化
+
+* 更新 README 访问统计接口并添加插件运行次数显示 ([7924a91](https://github.com/ClarityJS/meme-plugin/commit/7924a911f98f85f0cd5a0a6483db3388c5586a7d))
+
 ## [1.14.0](https://github.com/ClarityJS/meme-plugin/compare/v1.13.0...v1.14.0) (2025-02-19)
 
 ### ✨ 新功能
