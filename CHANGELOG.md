@@ -1,5 +1,11 @@
 # 变更日志
 
+## [1.14.3](https://github.com/ClarityJS/meme-plugin/compare/v1.14.2...v1.14.3) (2025-02-27)
+
+### 📚 文档更新
+
+* 在 README.md 中添加 Gif 图片操作功能 ([ebcbfef](https://github.com/ClarityJS/meme-plugin/commit/ebcbfefbc17a4e5d9f6a69a466707a720c63ef46))
+
 ## [1.14.2](https://github.com/ClarityJS/meme-plugin/compare/v1.14.1...v1.14.2) (2025-02-26)
 
 ### 🐛 修复
