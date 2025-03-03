@@ -1,5 +1,29 @@
 # 变更日志
 
+## [1.15.0](https://github.com/ClarityJS/meme-plugin/compare/v1.14.2...v1.15.0) (2025-03-03)
+
+### ✨ 新功能
+
+* **gif:** 优化 GIF 解析和速度调整功能 ([8489c9c](https://github.com/ClarityJS/meme-plugin/commit/8489c9c13d7707f231ed19221cf70d93ce427a7a))
+* **gif:** 增加 GIF 变速功能并优化帧处理 ([585013f](https://github.com/ClarityJS/meme-plugin/commit/585013fe4d4af694399fb68077f0a262a549cd5a))
+* **models:** 添加 Gif 图片操作功能 ([abafc02](https://github.com/ClarityJS/meme-plugin/commit/abafc02bb61c66ace29d65e173ce97d0afb0fa62))
+
+### 🐛 修复
+
+* **gif:** 修复 GIF 分解时无图片报错 ([ad18b6a](https://github.com/ClarityJS/meme-plugin/commit/ad18b6afb81df7382227167f4f5e98eae5b81da8))
+
+### 📚 文档更新
+
+* 在 README.md 中添加 Gif 图片操作功能 ([ebcbfef](https://github.com/ClarityJS/meme-plugin/commit/ebcbfefbc17a4e5d9f6a69a466707a720c63ef46))
+
+### ♻️ 重构
+
+* **gif:** 优化 GIF 图片分解回复消息的展示格式 ([4bbf821](https://github.com/ClarityJS/meme-plugin/commit/4bbf8219d7b59ef2de27fdc39e5978ada81d5c74))
+
+### ⚡ 性能优化
+
+* **gif:** 优化 GIF 解析过程并处理单帧 GIF 情况 ([ad030bc](https://github.com/ClarityJS/meme-plugin/commit/ad030bc60aec04ae53891857ac1a9c5f10be5af8))
+
 ## [1.14.2](https://github.com/ClarityJS/meme-plugin/compare/v1.14.1...v1.14.2) (2025-02-26)
 
 ### 🐛 修复
