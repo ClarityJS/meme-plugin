@@ -1,5 +1,23 @@
 # 变更日志
 
+## [1.15.1](https://github.com/ClarityJS/meme-plugin/compare/v1.15.0...v1.15.1) (2025-03-10)
+
+### 🐛 修复
+
+* **meme:** 修复初始化正则未生效 ([08ba5c6](https://github.com/ClarityJS/meme-plugin/commit/08ba5c6bb50d9bf2432009a4a9fd9a7ef85aa4c0))
+* **random:** 优化随机 meme 生成逻辑 ([070157e](https://github.com/ClarityJS/meme-plugin/commit/070157ecaeb571fcdab5d92683749be6e190a922))
+* 优化OneBot适配器下引用消息处理 ([#42](https://github.com/ClarityJS/meme-plugin/issues/42)) ([b370492](https://github.com/ClarityJS/meme-plugin/commit/b3704923446a18f23506dcd71c2a4418ba405d95))
+
+### ♻️ 重构
+
+* **components:** 优化 Config 组件中的代码结构 ([df72af2](https://github.com/ClarityJS/meme-plugin/commit/df72af2087e3ada956189de15b59c1d7ec54f03c))
+* **Config:** 移除 Config 组件中的冗余代码 ([23a00cf](https://github.com/ClarityJS/meme-plugin/commit/23a00cfb6e61f53e9120c0af2a84d136909f02f2))
+* **gif:** 重构 GIF 解析功能 ([d155b46](https://github.com/ClarityJS/meme-plugin/commit/d155b4680880584efb043597a390ac05754087e2))
+* **models:** 优化引用用户逻辑 ([6499569](https://github.com/ClarityJS/meme-plugin/commit/6499569c02b93c9f0ef3c4ab503ec2d7654f61d8))
+* **models:** 优化提及用户逻辑 ([723b44f](https://github.com/ClarityJS/meme-plugin/commit/723b44fe204fbf7f132aa3bd08db03e8249032b9))
+* 不再适配`喵崽` ([5f2252e](https://github.com/ClarityJS/meme-plugin/commit/5f2252eb74129c41c25579db5f17ac91b3a31355))
+* 开个玩笑，我又去改了下，修好立 ([74bc457](https://github.com/ClarityJS/meme-plugin/commit/74bc457abe8019f759cd91f1bddbccb9c4792dbd))
+
 ## [1.15.0](https://github.com/ClarityJS/meme-plugin/compare/v1.14.2...v1.15.0) (2025-03-03)
 
 ### ✨ 新功能
