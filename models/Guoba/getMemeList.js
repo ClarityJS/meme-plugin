@@ -13,10 +13,21 @@ export const getMemeList = async () => {
     })
   ))
 
-  const keywordPromises = keywords.map(async keyword => ({
+  const keywordPromises1 = keywords.map(async keyword => {
+    const value = (await meme.getByField('keyWords', keyword)).toString()
+    return {
+      label: keyword,
+      value: value
+    }
+  })
+
+  const keywordPromises2 = keywords.map(keyword => ({
     label: keyword,
-    value: (await meme.getByField('keyWords', keyword)).toString()
+    value: keyword
   }))
 
-  return Promise.all(keywordPromises)
+  const result1 = await Promise.all(keywordPromises1)
+  const result2 = keywordPromises2
+
+  return [ ...result1, ...result2 ]
 }
