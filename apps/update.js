@@ -111,10 +111,12 @@ export class update extends plugin {
     }
 
     try {
-      if (!isTask && e && e.msg.includes('强制')) {
-        await Utils.Tools.generateMemeData(true)
-      }
-      await Utils.Tools.generateMemeData()
+      const forceUpdate = !isTask && e && e.msg.includes('强制')
+
+      await Promise.all([
+        Utils.Tools.generateMemeData(forceUpdate),
+        Utils.Tools.generateArgData()
+      ])
       const Plugin = new meme()
       const pluginName = Plugin.name
       const pluginKey = pluginsLoader.priority.find((p) => {

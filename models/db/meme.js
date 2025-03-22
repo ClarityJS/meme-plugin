@@ -1,4 +1,4 @@
-import { col, DataTypes, fn, sequelize } from './base.js'
+import { col, DataTypes, fn, literal, Op, sequelize } from './base.js'
 
 /**
  * 定义 `meme` 表（包含 JSON 数据存储、关键字、参数、标签等）
@@ -225,8 +225,8 @@ export async function getByKey (key, name = '*') {
 }
 
 /**
- * 通过指定字段查询数据（自动识别 JSON、字符串、数值）
- * @param {string} field - 字段名（可能是 JSON 数组、字符串或数值）
+ * 通过指定字段查询数据（支持 JSON 数组、字符串、数值）
+ * @param {string} field - 需要查询的字段（可能是 JSON 或字符串）
  * @param {string | number | string[] | number[]} value - 需要匹配的值（支持多个）
  * @param {string | string[]} returnField - 返回字段（默认 key）
  * @returns {Promise<object[]>} - 返回符合条件的记录数组
@@ -238,17 +238,20 @@ export async function getByField (field, value, returnField = 'key') {
 
   const values = Array.isArray(value) ? value : [ value ]
 
-  const conditions = values
-    .map(v => {
-      if (typeof v === 'number') {
-        return `\`${field}\` = ${v}`
-      } else {
-        return `EXISTS (SELECT 1 FROM json_each(\`${field}\`) WHERE json_each.value = '${v}') OR \`${field}\` = '${v}'`
-      }
-    })
-    .join(' AND ')
+  const whereConditions = values.map(v => {
+    if (typeof v === 'number') {
+      return { [field]: v }
+    }
+    return {
+      [Op.or]: [
+        { [field]: v },
+        literal(`CASE WHEN json_valid(${field}) THEN EXISTS (SELECT 1 FROM json_each(${field}) WHERE json_each.value = '${v}') ELSE 0 END`)
+      ]
+    }
+  })
 
-  const whereClause = sequelize.literal(`(${conditions})`)
+  const whereClause = { [Op.and]: whereConditions }
+
   const attributes = Array.isArray(returnField) ? returnField : [ returnField ]
 
   const res = await table.findAll({
@@ -256,11 +259,9 @@ export async function getByField (field, value, returnField = 'key') {
     where: whereClause
   })
 
-  if (!Array.isArray(returnField)) {
-    return res.map(item => item[returnField])
-  }
-
-  return res.map(item => item.toJSON())
+  return Array.isArray(returnField)
+    ? res.map(item => item.toJSON())
+    : res.map(item => item[returnField])
 }
 
 /**

@@ -256,10 +256,10 @@ const Common = {
 
     try {
       if (e.isGroup) {
-        const member = Bot[e.self_id].pickMember(e.group_id, qq)
+        const member = this.e.bot.pickMember(e.group_id, qq)
         avatarUrl = await member.getAvatarUrl()
       } else if (e.isPrivate) {
-        const friend = Bot[e.self_id].pickFriend(qq)
+        const friend = this.e.bot.pickFriend(qq)
         avatarUrl = await friend.getAvatarUrl()
       }
     } catch (err) {

@@ -1,7 +1,7 @@
 import fs from 'node:fs'
 
 import chalk from 'chalk'
-import { col, DataTypes, fn, Op, Sequelize } from 'sequelize'
+import { col, DataTypes, fn, literal, Op, Sequelize } from 'sequelize'
 
 import { Version } from '#components'
 
@@ -29,6 +29,7 @@ export {
   col,
   DataTypes,
   fn,
+  literal,
   Op,
   sequelize
 }

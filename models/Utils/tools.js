@@ -1,8 +1,7 @@
 import chalk from 'chalk'
 
 import { Config } from '#components'
-import { db, Utils } from '#models'
-
+import { db, Meme, Utils } from '#models'
 
 const Tools = {
   /**
@@ -10,28 +9,39 @@ const Tools = {
    * @returns {Promise<string>} - 返回表情包基础 URL
    */
   async getBaseUrl () {
-    /** 该方法后续会扩展，为rust准备 */
     return Config.server?.url?.replace(/\/+$/, '') || 'https://meme.wuliya.cn'
   },
 
   /**
-   * 加载表情包数据
+   * 初始化表情包数据
    * 如果数据已加载则直接返回，否则从本地或远程加载表情包数据
    * @returns {Promise<void>}
    */
   async init () {
     logger.debug(chalk.cyan('🚀 开始加载表情包数据...'))
 
-    const memeData = await db.meme.getAll()
+    const [ memeData, argData ] = await Promise.all([
+      db.meme.getAll(),
+      db.preset.getAll()
+    ])
 
-    if (!memeData || memeData.length === 0) {
+    const tasks = []
+    if (!memeData?.length) {
       logger.debug(chalk.cyan('🚀 表情包数据不存在，开始生成...'))
-      await this.generateMemeData(true)
+      tasks.push(this.generateMemeData(true))
     } else {
       logger.debug(chalk.cyan('✅ 表情包数据已存在，加载完成'))
     }
-  },
 
+    if (!argData?.length) {
+      logger.debug(chalk.cyan('🚀 参数数据不存在，开始生成...'))
+      tasks.push(this.generateArgData())
+    } else {
+      logger.debug(chalk.cyan('✅ 参数数据已存在，加载完成'))
+    }
+
+    if (tasks.length) await Promise.all(tasks)
+  },
 
   /**
    * 生成本地表情包数据
@@ -48,9 +58,13 @@ const Tools = {
 
       logger.info(chalk.magenta.bold('🌟 开始生成表情包数据...'))
 
-      const localKeys = forceUpdate ? new Set() : new Set(await this.getAllKeys())
+      const localKeys = forceUpdate
+        ? new Set()
+        : new Set(await this.getAllKeys())
 
-      const remoteKeysResponse = await Utils.Request.get(`${baseUrl}/memes/keys`)
+      const remoteKeysResponse = await Utils.Request.get(
+        `${baseUrl}/memes/keys`
+      )
       if (!remoteKeysResponse.success || !remoteKeysResponse.data.length) {
         logger.warn('⚠️ 未获取到任何表情包键值，跳过数据更新。')
         return
@@ -59,16 +73,18 @@ const Tools = {
 
       const keysToUpdate = forceUpdate
         ? [ ...remoteKeys ]
-        : [ ...remoteKeys ].filter(key => !localKeys.has(key))
+        : [ ...remoteKeys ].filter((key) => !localKeys.has(key))
 
-      const keysToDelete = [ ...localKeys ].filter(key => !remoteKeys.has(key))
+      const keysToDelete = [ ...localKeys ].filter((key) => !remoteKeys.has(key))
 
       if (!keysToUpdate.length && !keysToDelete.length) {
         logger.info(chalk.cyan('✅ 表情包数据已是最新，无需更新或删除。'))
         return
       }
 
-      logger.debug(chalk.magenta(`🔄 需要更新 ${keysToUpdate.length} 个表情包`))
+      logger.debug(
+        chalk.magenta(`🔄 需要更新 ${keysToUpdate.length} 个表情包`)
+      )
       logger.debug(chalk.red(`🗑️  需要删除 ${keysToDelete.length} 个表情包`))
 
       if (keysToDelete.length) {
@@ -76,17 +92,26 @@ const Tools = {
         logger.info(chalk.yellow(`🗑️ 已删除 ${keysToDelete.length} 个表情包`))
       }
 
-      const processValue = (value) =>{
+      const processValue = (value) => {
         if (Array.isArray(value) && value.length === 0) return null
-        if (typeof value === 'object' && value !== null && Object.keys(value).length === 0) return null
+        if (
+          typeof value === 'object' &&
+          value !== null &&
+          Object.keys(value).length === 0
+        )
+          return null
         return value
       }
 
       await Promise.all(
         keysToUpdate.map(async (key) => {
-          const infoResponse = await Utils.Request.get(`${baseUrl}/memes/${key}/info`)
+          const infoResponse = await Utils.Request.get(
+            `${baseUrl}/memes/${key}/info`
+          )
           if (!infoResponse.success) {
-            logger.error(`❌ 获取表情包详情失败: ${key} - ${infoResponse.message}`)
+            logger.error(
+              `❌ 获取表情包详情失败: ${key} - ${infoResponse.message}`
+            )
             return
           }
 
@@ -130,8 +155,35 @@ const Tools = {
   },
 
   /**
- * 发送表情包生成请求
- */
+   * 生成预设参数数据
+   * @returns {Promise<void>}
+   */
+  async generateArgData () {
+    try {
+      logger.debug(chalk.blue.bold('🛠️ 开始生成预设参数数据...'))
+      const preset = Meme.preset
+      console.log(preset)
+      await db.preset.removeAll()
+      await Promise.all(
+        preset.map(async (preset) => {
+          await db.preset.add(
+            preset.name,
+            preset.key,
+            preset.arg_name,
+            preset.arg_value
+          )
+        })
+      )
+      logger.debug(chalk.green.bold(`✅ 成功写入 ${preset.length} 条预设数据`))
+    } catch (error) {
+      logger.error(`❌ 预设数据生成失败: ${error.message}`)
+      throw error
+    }
+  },
+
+  /**
+   * 发送表情包生成请求
+   */
   async request (endpoint, params = {}, responseType = 'arraybuffer') {
     const baseUrl = await this.getBaseUrl()
     const url = `${baseUrl}/memes/${endpoint}/`
@@ -139,7 +191,12 @@ const Tools = {
     const isFormData = params instanceof FormData
     const headers = responseType ? { Accept: responseType } : {}
 
-    return Utils.Request.post(url, params, isFormData ? undefined : headers, responseType)
+    return Utils.Request.post(
+      url,
+      params,
+      isFormData ? undefined : headers,
+      responseType
+    )
   },
 
   /**
@@ -148,42 +205,64 @@ const Tools = {
    * @returns {Promise<string|null>} - 返回预览图片的 URL 或 null
    */
   async getPreviewUrl (memeKey) {
-    return memeKey ? `${await this.getBaseUrl()}/memes/${memeKey}/preview`.trim() : null
+    return memeKey
+      ? `${await this.getBaseUrl()}/memes/${memeKey}/preview`.trim()
+      : null
   },
 
   /**
-     * 将关键字转换为表情包键
-     * @param {string} keyword - 表情包关键字
-     * @returns {string|null} - 返回对应的表情包键或 null
-     */
+   * 将关键字转换为表情包键
+   * @param {string} keyword - 表情包关键字
+   * @returns {string|null} - 返回对应的表情包键或 null
+   */
   async getKey (keyword) {
-    return (await db.meme.getByField('keyWords', keyword, 'key')).toString() || null
+    return (
+      (await db.meme.getByField('keyWords', keyword, 'key')).toString() || null
+    )
+  },
+
+  /**
+   * 将关键字转换为表情包键
+   * @param {string} keyword  - 表情包关键字(快捷指令)
+   * @returns {string|null} - 返回对应的表情包键或 null
+   */
+  async getArgKey (keyword) {
+    return (
+      (await db.preset.getByField('name', keyword, 'key')).toString() || null
+    )
   },
   /**
-     * 获取指定表情包的关键字
-     * @param {string} memeKey - 表情包的唯一标识符
-     * @returns {string[]|null} - 返回表情包关键字数组或 null
-     */
+   * 获取指定表情包的关键字
+   * @param {string} memeKey - 表情包的唯一标识符
+   * @returns {string[]|null} - 返回表情包关键字数组或 null
+   */
   async getKeyWords (memeKey) {
     return JSON.parse(await db.meme.getByKey(memeKey, 'keyWords')) || null
   },
 
-
   /**
- * 获取所有的关键词
- * @returns {Promise<Array<string>>} - 返回包含所有关键词的数组
- */
+   * 获取所有的关键词
+   * @returns {Promise<Array<string>>} - 返回包含所有关键词的数组
+   */
   async getAllKeyWords () {
     const keyWordsList = await db.meme.getAllSelect('keyWords')
 
-    return keyWordsList.map(item => JSON.parse(item)).flat() || null
+    return keyWordsList.map((item) => JSON.parse(item)).flat() || null
   },
 
+  /**
+   * 获取所有的参数关键词(快捷指令)
+   * @returns {Promise<Array<string>>} - 返回包含所有关键词的数组
+   */
+  async getArgAllKeyWords () {
+    const keyWordsList = await db.preset.getAllSelect('name')
+    return keyWordsList.flat() || null
+  },
 
   /**
-       * 获取所有的 key
-       * @returns {Array<string>} - 返回所有的表情包 key 的数组
-       */
+   * 获取所有的 key
+   * @returns {Array<string>} - 返回所有的表情包 key 的数组
+   */
   async getAllKeys () {
     const keyList = await db.meme.getAllSelect('key')
 
@@ -191,10 +270,48 @@ const Tools = {
   },
 
   /**
- * 获取表情包的参数类型
- * @param {string} memeKey - 表情包的键值
- * @returns {Promise<object|null>} - 返回参数类型信息或 null
- */
+   * 获取快捷指令信息
+   * @param {string} name - 表情包的唯一标识符(快捷指令)
+   * @returns {Promise<object|null>} -返回快捷指令信息
+   */
+  async getArgInfo (name) {
+    return await db.preset.get(name)
+  },
+
+  /**
+   * 获取所有的快捷指令信息
+   * @param {string} memeKey - 表情的键值
+   * @returns {Promise<Array<string>>} - 返回包含所有关键词的数组
+   */
+  async gatArgAllName (memeKey) {
+    const nameList = await db.preset.getAllByKey(memeKey) ?? []
+    return nameList.map((item) => item.name) || null
+  },
+  /**
+   * 获取预设参数的名称
+   * @param {string} name - 预设参数的唯一标识符(快捷方式)
+   * @returns {Promise<string|null>} - 返回参数名称或 null
+   */
+  async getArgName (name) {
+    const Argname = await db.preset.getByKey(name, 'arg_name')
+    return Argname|| null
+  },
+
+  /**
+   * 获取预设参数的值
+   * @param {string} name - 预设参数的唯一标识符(快捷方式)
+   * @returns {Promise<string|null>} - 返回参数值或 null
+   */
+  async getArgValue (name) {
+    const value = await db.preset.getByKey(name, 'arg_value')
+    return value || null
+  },
+
+  /**
+   * 获取表情包的参数类型
+   * @param {string} memeKey - 表情包的键值
+   * @returns {Promise<object|null>} - 返回参数类型信息或 null
+   */
   async getParams (memeKey) {
     if (!memeKey) return null
 
@@ -204,9 +321,25 @@ const Tools = {
       return null
     }
 
-    const { min_texts, max_texts, min_images, max_images, default_texts, args_type } = JSON.parse(memeParams)
+    const {
+      min_texts,
+      max_texts,
+      min_images,
+      max_images,
+      default_texts,
+      args_type
+    } = JSON.parse(memeParams)
 
-    return { min_texts, max_texts, min_images, max_images, default_texts, args_type } || null
+    return (
+      {
+        min_texts,
+        max_texts,
+        min_images,
+        max_images,
+        default_texts,
+        args_type
+      } || null
+    )
   },
   /**
    * 获取指定表情包参数的类型
@@ -214,62 +347,57 @@ const Tools = {
    * @param {string} paramName - 参数名称
    * @returns {string|null} - 返回参数的类型或 null
    */
-  async getParamType (key, paramName) {
-    const params = await this.getParams(key)
-    const argsModel = params.args_type.args_model
-    const properties = argsModel.properties
+  async getParamInfo (key) {
+    const { args_type } = await this.getParams(key)
 
-    if (properties[paramName]) {
-      const paramInfo = properties[paramName]
-      if (paramName === 'user_infos') {
-        return null
-      }
-
-      if (paramInfo.type) {
-        return paramInfo.type
-      }
+    if (!args_type || !args_type.args_model) {
+      return []
     }
 
-    return null
+    const argsModel = args_type.args_model
+    const properties = argsModel.properties || {}
+
+    return Object.entries(properties)
+      .filter(([ name ]) => name !== 'user_infos')
+      .map(([ name, paramInfo ]) => ({
+        name,
+        description: paramInfo.description || null
+      }))
   },
 
   /**
-     * 获取指定 key 的参数描述信息
-     * @param {string} key - 需要获取描述的 key。
-     * @returns {object|null} - 返回描述信息
-     */
+   * 获取指定 key 的参数描述信息
+   * @param {string} key - 需要获取描述的 key。
+   * @returns {object|null} - 返回描述信息
+   */
   async getDescriptions (key) {
-    const args_type = JSON.parse(await db.meme.getByKey(key, 'args_type'))
-    if (args_type === null) {
+    const params = await this.getParamInfo(key)
+
+    if (!params || params.length === 0) {
       return null
     }
 
-    const properties = args_type.args_model?.properties || null
-
-    const descriptions = Object.entries(properties)
-      .filter(([ paramName ]) => paramName !== 'user_infos')
-      .reduce((acc, [ paramName, paramInfo ]) => {
-        acc[paramName] = paramInfo.description || paramInfo.title || null
-        return acc
-      }, {})
-
-    return descriptions
+    return params.reduce((acc, { name, description }) => {
+      acc[name] = description
+      return acc
+    }, {})
   },
 
+
   /**
-     * 获取对应表情的表情
-     * @param {string} key
-     * @returns {string[]|null} 返回对应表情的表情
-     */
+   * 获取对应表情的表情
+   * @param {string} key
+   * @returns {string[]|null} 返回对应表情的表情
+   */
   async getTags (key) {
     return JSON.parse(await db.meme.getByKey(key, 'tags')) || null
   },
 
   /**
-     * 获取对应表情的默认文本
-     * @param {string} key
-     * @returns {string[]|null} 返回对应表情的默认文本
-     */
+   * 获取对应表情的默认文本
+   * @param {string} key
+   * @returns {string[]|null} 返回对应表情的默认文本
+   */
   async getDeftext (key) {
     return JSON.parse(await db.meme.getByKey(key, 'defText')) || null
   },
@@ -283,10 +411,8 @@ const Tools = {
     if (!Array.isArray(keys)) {
       keys = [ keys ] // 确保 keys 是数组
     }
-    await Promise.all(keys.map(key => db.meme.remove(key)))
+    await Promise.all(keys.map((key) => db.meme.remove(key)))
   },
-
-
 
   /**
    * 检查输入是否在禁用表情包列表中
@@ -296,7 +422,7 @@ const Tools = {
   async isBlacklisted (input) {
     const blacklistedKeys = await Promise.all(
       Config.access.blackList.map(async (item) => {
-        return await this.getKey(item) || item
+        return (await this.getKey(item)) || item
       })
     )
 

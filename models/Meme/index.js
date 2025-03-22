@@ -5,6 +5,21 @@ import { handle, handleArgs } from './args.js'
 import { handleImages } from './images.js'
 import { handleTexts } from './texts.js'
 
+/**
+ * 生成表情包
+ * @param {Object} e 事件对象
+ * @param {string} memeKey 表情模板标识
+ * @param {number} min_texts 最小文字数量
+ * @param {number} max_texts 最大文字数量
+ * @param {number} min_images 最小图片数量
+ * @param {number} max_images 最大图片数量
+ * @param {string[]} default_texts 默认文字数组
+ * @param {string} args_type 参数类型
+ * @param {string} userText 用户输入文本
+ * @param {boolean} isArg 是否为参数模式
+ * @param {object} Arg 参数模式下的参数
+ * @returns {Promise<string>} 生成的表情包图片base64 数据
+ */
 async function make (
   e,
   memeKey,
@@ -14,7 +29,10 @@ async function make (
   max_images,
   default_texts,
   args_type,
-  userText) {
+  userText,
+  isArg = false,
+  { Arg }
+) {
   const formData = new FormData()
   let quotedUser
   let source = null
@@ -52,7 +70,7 @@ async function make (
      * 处理参数类型
      */
     if (args_type != null) {
-      const args = await handleArgs(e, memeKey, userText, allUsers, formData)
+      const args = await handleArgs(e, memeKey, userText, allUsers, formData, isArg, { Arg })
       if (!args.success) {
         throw new Error(args.message)
       }
@@ -104,3 +122,4 @@ async function make (
 }
 
 export { handle, handleArgs, handleImages, handleTexts, make }
+export { preset } from './preset.js'
