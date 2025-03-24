@@ -1,5 +1,15 @@
 # 变更日志
 
+## [1.16.1](https://github.com/ClarityJS/meme-plugin/compare/v1.16.0...v1.16.1) (2025-03-24)
+
+### 🐛 修复
+
+* **models:** 调整玛丽说和濑名说模板的名称和顺序 ([3ce2628](https://github.com/ClarityJS/meme-plugin/commit/3ce26284b5a0c5cf469484196d2a48eae638b4fd))
+
+### ♻️ 重构
+
+* **models:** 重构数据库相关操作并优化工具函数 ([8b05662](https://github.com/ClarityJS/meme-plugin/commit/8b05662a6e582e11fa81c79b0dce528be531a7d4))
+
 ## [1.16.0](https://github.com/ClarityJS/meme-plugin/compare/v1.15.3...v1.16.0) (2025-03-23)
 
 ### ✨ 新功能
