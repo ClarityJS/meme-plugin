@@ -1,5 +1,17 @@
 # 变更日志
 
+## [1.16.2](https://github.com/ClarityJS/meme-plugin/compare/v1.16.1...v1.16.2) (2025-04-09)
+
+
+### 🐛 错误修复
+
+* **config:** 修复指令无法添加黑名单表情列表 ([12d5c95](https://github.com/ClarityJS/meme-plugin/commit/12d5c95ab5f8e339d29903494c1d986ae2cdec5e))
+
+
+### 🎡 持续集成
+
+* **release:** 更新获取最新标签的命令 ([71afafa](https://github.com/ClarityJS/meme-plugin/commit/71afafaec53a402a2f471fa2653e5eab2e3e18e9))
+
 ## [1.16.1](https://github.com/ClarityJS/meme-plugin/compare/v1.16.0...v1.16.1) (2025-03-29)
 
 
