@@ -1,5 +1,22 @@
 # 变更日志
 
+## [1.17.1](https://github.com/ClarityJS/meme-plugin/compare/v1.17.0...v1.17.1) (2025-04-25)
+
+
+### 🐛 错误修复
+
+* **models:** 优化 getBaseUrl 方法并增加异常处理 ([4c86cd7](https://github.com/ClarityJS/meme-plugin/commit/4c86cd7e92f9d805333312c3aafc067be43c4dbd))
+
+
+### ♻️ 代码重构
+
+* **admin:** 优化表情设置命令的关键词排序 ([6142851](https://github.com/ClarityJS/meme-plugin/commit/6142851561865fc9a9290aaa25e48b6f09e93bfc))
+
+
+### 📦️ 构建系统
+
+* **deps:** 更新 ESLint 并调整依赖项 ([4398d4a](https://github.com/ClarityJS/meme-plugin/commit/4398d4a1d8adcad02393b2329a453b289849609c))
+
 ## [1.17.0](https://github.com/ClarityJS/meme-plugin/compare/v1.16.1...v1.17.0) (2025-04-24)
 
 
